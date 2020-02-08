@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "988667748536",
+    "firebase_url": "https://who-is-khamidjon.firebaseio.com",
+    "project_id": "who-is-khamidjon",
+    "storage_bucket": "who-is-khamidjon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988667748536:android:c74a25728533c6c0bc544d",
+        "android_client_info": {
+          "package_name": "com.hamidjonhamidov.whoiskhamidjon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988667748536-c9nvf91o9nm42c5ngm5uu6fk5pnrbbrp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwyN8v3kYPATKNrbsfrGf_VbUXL2ffXfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988667748536-c9nvf91o9nm42c5ngm5uu6fk5pnrbbrp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

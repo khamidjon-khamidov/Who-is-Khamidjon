@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/aboutMeFragment">
+
+    <fragment
+        android:id="@+id/aboutMeFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.AboutMeFragment"
+        android:label="AboutMeFragment" >
+        <action
+            android:id="@+id/action_aboutMeFragment_to_skillsListFragment"
+            app:destination="@id/skillsListFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            />
+        <action
+            android:id="@+id/action_aboutMeFragment_to_personalProjectsFragment"
+            app:destination="@id/personalProjectsFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>
+        <action
+            android:id="@+id/action_aboutMeFragment_to_aboutAppFragment"
+            app:destination="@id/aboutAppFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>
+        <action
+            android:id="@+id/action_aboutMeFragment_to_contactTypeFragment"
+            app:destination="@id/contactTypeFragment"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/skillsListFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListFragment"
+        android:label="fragment_skills_list"
+        tools:layout="@layout/fragment_skills_list" >
+
+        <action
+            android:id="@+id/action_skillsListFragment_to_skillsDetailsFragment"
+            app:destination="@id/skillsDetailsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/skillsDetailsFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsDetailsFragment"
+        android:label="fragment_skills_details"
+        tools:layout="@layout/fragment_skills_details" />
+
+    <fragment
+        android:id="@+id/personalProjectsFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.persojal_projects.PersonalProjectsFragment"
+        android:label="fragment_personal_projects"
+        tools:layout="@layout/fragment_personal_projects" />
+
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.about_app.AboutAppFragment"
+        android:label="fragment_about_app"
+        tools:layout="@layout/fragment_about_app" />
+
+    <fragment
+        android:id="@+id/contactTypeFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactTypeFragment"
+        android:label="fragment_contact_type"
+        tools:layout="@layout/fragment_contact_type" >
+        <action
+            android:id="@+id/action_contactTypeFragment_to_contactFragment"
+            app:destination="@id/contactFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+</navigation>

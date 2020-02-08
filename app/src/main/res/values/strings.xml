@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Who is Khamidjon</string>
+    <string name="my_full_name">Khamidjon\nKhamidov</string>
+    <string name="about_me">About me</string>
+    <string name="skills">Skills</string>
+    <string name="personal_projects">Personal Projects</string>
+    <string name="source_code">Source Code</string>
+    <string name="contact_me">Contact me</string>
+    <string name="about_app">About App</string>
+    <string name="exit">Exit</string>
+    <string name="personal_posts">Personal Posts</string>
+    <string name="work_smart_amp_hard"><![CDATA[Work Smart&Hard!]]></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
