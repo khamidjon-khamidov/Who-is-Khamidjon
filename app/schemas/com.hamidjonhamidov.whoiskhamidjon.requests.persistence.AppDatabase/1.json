@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4b91f59fd3a244c9324f9da5ba93d358",
+    "identityHash": "455502f18505785e2cf4a039c61a25f1",
     "entities": [
       {
         "tableName": "about_me",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pk` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL, `address` TEXT NOT NULL, `phone_number` TEXT NOT NULL, `tuit` TEXT NOT NULL, `south_bank` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pk` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `email` TEXT NOT NULL, `address` TEXT NOT NULL, `phone_number` TEXT NOT NULL, `tuit` TEXT NOT NULL, `south_bank` TEXT NOT NULL, `profile_image_url` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "pk",
@@ -27,7 +27,7 @@
             "notNull": true
           },
           {
-            "fieldPath": "phoneNumber",
+            "fieldPath": "phone_number",
             "columnName": "phone_number",
             "affinity": "TEXT",
             "notNull": true
@@ -39,8 +39,14 @@
             "notNull": true
           },
           {
-            "fieldPath": "southBank",
+            "fieldPath": "south_bank",
             "columnName": "south_bank",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profile_image_url",
+            "columnName": "profile_image_url",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -58,7 +64,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4b91f59fd3a244c9324f9da5ba93d358')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '455502f18505785e2cf4a039c61a25f1')"
     ]
   }
 }

@@ -10,8 +10,8 @@ import com.hamidjonhamidov.whoiskhamidjon.models.database.AboutMeModel
 @Dao
 interface AboutMeDao{
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAndIgnore(aboutMeModel: AboutMeModel): Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertOrReplace(aboutMeModel: AboutMeModel): Long
 
     @Query("SELECT * FROM about_me")
     fun getAboutMeModel(): LiveData<AboutMeModel?>

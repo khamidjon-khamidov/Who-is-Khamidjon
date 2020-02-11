@@ -1,9 +1,8 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import com.google.firebase.firestore.FirebaseFirestore
 import com.hamidjonhamidov.whoiskhamidjon.repository.AboutMeRepository
-import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseViewModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent
@@ -17,14 +16,17 @@ import javax.inject.Inject
 class AboutMeViewModel
 @Inject
 constructor(
-    val sessionManager: SessionManager,
+//    val sessionManager: SessionManager,
     val aboutMeRepository: AboutMeRepository
 ): BaseViewModel<AboutMeStateEvent, AboutMeViewState>(){
+
+    private val TAG = "AppDebug"
 
     override fun handleStateEvent(stateEvent: AboutMeStateEvent): LiveData<DataState<AboutMeViewState>> {
         return when(stateEvent){
             is GetAboutMeStateEvent -> {
-                 aboutMeRepository.getAboutMeInfo()
+                Log.d(TAG, "AboutMeViewModel: handleStateEvent: GetAboutMeStateEvent")
+                aboutMeRepository.getAboutMeInfo()
             }
 
             is None -> {
@@ -35,6 +37,10 @@ constructor(
 
     fun setAboutMeFields(aboutMeFields: AboutMeFields){
         val update = getCurrentViewStateOrNew()
+        if(update.aboutMeFields.aboutMeModel == aboutMeFields.aboutMeModel) return
+
+        Log.d(TAG, "AboutMeViewModel: setAboutMeFields: called")
+
         update.aboutMeFields = aboutMeFields
         setViewState(update)
 
@@ -51,14 +57,13 @@ constructor(
     }
 
     fun handlePendingData(){
+        Log.d(TAG, "AboutMeViewModel: handlePendingData: called")
         setStateEvent(None())
     }
 
     override fun initNewViewState(): AboutMeViewState {
         return AboutMeViewState()
     }
-
-
 }
 
 

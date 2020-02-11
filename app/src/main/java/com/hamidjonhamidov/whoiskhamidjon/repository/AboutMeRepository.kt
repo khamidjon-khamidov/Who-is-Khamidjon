@@ -9,6 +9,8 @@ import com.hamidjonhamidov.whoiskhamidjon.requests.firebase.RequestFromFirebase
 import com.hamidjonhamidov.whoiskhamidjon.requests.persistence.AboutMeDao
 import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
 import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
+import com.hamidjonhamidov.whoiskhamidjon.ui.MyResponse
+import com.hamidjonhamidov.whoiskhamidjon.ui.ResponseType
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
 import com.hamidjonhamidov.whoiskhamidjon.util.GenericNetworkResponse
 import com.hamidjonhamidov.whoiskhamidjon.util.JobManager
@@ -31,29 +33,36 @@ constructor(
 
 
     fun getAboutMeInfo(): LiveData<DataState<AboutMeViewState>>{
+        Log.d(TAG, "AboutMeRepository: getAboutMeInfo: called")
+
         return object : NetworkBoundResource<AboutMeModel, AboutMeModel, AboutMeViewState>(
             sessionManager.isConnectedToTheInternet(),
             true,
             false,
             true
         ){
-            override suspend fun createCacheRequestAndReturn() {
+            override suspend fun createCacheRequestAndReturn(message: String?) {
                 Log.d(TAG, "AboutMeRepository: createCacheRequestAndReturn: ")
 
                 withContext(Main){
                     // finishing by viewing db cache
                     result.addSource(loadFromCache()){viewState: AboutMeViewState? ->
-                        onCompleteJob(DataState.data(viewState, null))
+
+                        onCompleteJob(DataState.data(viewState, message?.let { MyResponse(
+                            message,
+                            ResponseType.Snackbar()
+                        )}))
                     }
                 }
             }
 
             override suspend fun handleNetworkSuccessResponse(response: NetworkSuccessResponse<AboutMeModel>) {
-                Log.d(TAG, "AboutMeRepository: handleNetworkSuccessResponse: ")
+                Log.d(TAG, "AboutMeRepository: handleNetworkSuccessResponse: ${response.body.email}")
+
 
                 updateLocalDb(response.body)
 
-                createCacheRequestAndReturn()
+                createCacheRequestAndReturn(response.successResponseMessage)
             }
 
             override fun createCall(): LiveData<GenericNetworkResponse<AboutMeModel>> {
@@ -89,7 +98,7 @@ constructor(
                 withContext(IO){
                     launch {
                         Log.d(TAG, "AboutMeRepository: updateLocalDb: almost inserted")
-                        aboutMeDao.insertAndIgnore(cacheObject)
+                        aboutMeDao.insertOrReplace(cacheObject)
                     }
                 }
             }

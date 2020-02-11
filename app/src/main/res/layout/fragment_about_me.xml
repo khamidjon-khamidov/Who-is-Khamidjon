@@ -1,18 +1,414 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    android:id="@+id/id_about_me_fragment"
+    >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_self_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <ImageView
+                    android:id="@+id/iv_profile_picture_about_me"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_img_src"/>
+
+            </androidx.cardview.widget.CardView>
+
+<!--           full name-->
+            <TextView
+                android:id="@+id/tv_full_name_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/full_name"
+                app:layout_constraintTop_toBottomOf="@id/card_self_image"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_full_name_info_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/khamidjon_khamidov"
+                android:layout_marginEnd="3dp"
+                app:layout_constraintTop_toBottomOf="@id/card_self_image"
+                app:layout_constraintLeft_toRightOf="@id/tv_full_name_about_me"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                />
+
+<!--            birth data-->
+            <TextView
+                android:id="@+id/tv_my_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/age"
+                app:layout_constraintTop_toBottomOf="@id/tv_full_name_info_about_me"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_my_age_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_birth_date"
+                app:layout_constraintTop_toBottomOf="@id/tv_full_name_info_about_me"
+                app:layout_constraintLeft_toRightOf="@id/tv_my_age"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:layout_marginEnd="3dp"
+                />
+
+<!--            programming experience-->
+            <TextView
+                android:id="@+id/tv_pr_ex_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experience"
+                app:layout_constraintTop_toBottomOf="@id/tv_my_age_info"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_pr_ex_info_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                app:layout_constraintTop_toBottomOf="@id/tv_my_age_info"
+                app:layout_constraintLeft_toRightOf="@id/tv_pr_ex_about_me"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:layout_marginEnd="3dp"
+                />
+
+<!--            hobbies-->
+            <TextView
+                android:id="@+id/tv_hobbies_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hobbies"
+                app:layout_constraintTop_toBottomOf="@id/tv_pr_ex_info_about_me"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_hobbies_info_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chess_and_table_tennis"
+                app:layout_constraintTop_toBottomOf="@id/tv_pr_ex_info_about_me"
+                app:layout_constraintLeft_toRightOf="@id/tv_hobbies_about_me"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:layout_marginEnd="3dp"
+                />
+
+<!--            higher education-->
+            <TextView
+                android:id="@+id/tv_education_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/education"
+                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_education_info_about_me_tuit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tuit"
+                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
+                app:layout_constraintLeft_toRightOf="@id/tv_education_about_me"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="3dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_education_info_about_me_and"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/and"
+                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
+                app:layout_constraintLeft_toRightOf="@id/tv_education_info_about_me_tuit"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="3dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_education_info_about_me_lsbu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lsbu"
+                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
+                app:layout_constraintLeft_toRightOf="@id/tv_education_info_about_me_and"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="3dp"
+                />
+<!--            address-->
+            <TextView
+                android:id="@+id/tv_address_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                app:layout_constraintTop_toBottomOf="@id/tv_education_info_about_me_tuit"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_address_info_about_me"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                app:layout_constraintTop_toBottomOf="@id/tv_education_info_about_me_tuit"
+                app:layout_constraintLeft_toRightOf="@id/tv_address_about_me"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginEnd="10dp"
+                />
+
+<!--            phone number-->
+            <TextView
+                android:id="@+id/tv_phone_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number"
+                app:layout_constraintTop_toBottomOf="@id/tv_address_info_about_me"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_phone_info_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                app:layout_constraintTop_toBottomOf="@id/tv_address_info_about_me"
+                app:layout_constraintLeft_toRightOf="@id/tv_phone_about_me"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:layout_marginEnd="3dp"
+                />
+
+<!--            email-->
+            <TextView
+                android:id="@+id/tv_email_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_info_about_me"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginStart="10dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_email_info_about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/loading"
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_info_about_me"
+                app:layout_constraintLeft_toRightOf="@id/tv_email_about_me"
+                app:layout_goneMarginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:textSize="20sp"
+                android:textColor="@color/green"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold"
+                android:layout_marginEnd="3dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_sheet_about_me"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@android:color/darker_gray"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_hideable="true"
+        android:elevation="20dp"
+        android:clipToPadding="true">
+
+
+        <TextView
+            android:id="@+id/tv_uni_name_about_me_btm_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/my_higher_education"
+            android:gravity="center_horizontal"
+            android:textSize="23sp"
+            android:textStyle="italic|bold"
+            android:textColor="@color/green"
+            android:background="@color/black_transparent"/>
+
+        <TextView
+            android:id="@+id/tv_btm_subject_about_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subjects"
+            app:layout_constraintTop_toBottomOf="@id/tv_uni_name_about_me_btm_sheet"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textColor="@color/yellow"
+            android:textSize="26sp"/>
+
+        <TextView
+            android:id="@+id/tv_btm_score_about_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scores"
+            app:layout_constraintTop_toBottomOf="@id/tv_uni_name_about_me_btm_sheet"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/yellow"
+            android:textSize="26sp"/>
+
+        <TextView
+            android:id="@+id/tv_btm_subject_list_about_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_btm_subject_about_me"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_btm_score_list_about_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_btm_score_about_me"
+            app:layout_constraintLeft_toLeftOf="@id/tv_btm_score_about_me"
+            app:layout_constraintRight_toRightOf="@id/tv_btm_score_about_me"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

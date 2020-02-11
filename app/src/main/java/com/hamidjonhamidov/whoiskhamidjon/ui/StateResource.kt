@@ -4,7 +4,7 @@ data class Loading(val isLoading: Boolean)
 data class Data<T>(val dataReceived: Event<T>?, val responseReceived: Event<MyResponse>?)
 data class StateError(val myResponse: MyResponse)
 
-data class MyResponse(val message: String?, val responseType: ResponseType)
+data class MyResponse(var message: String?, val responseType: ResponseType)
 sealed class ResponseType{
 
     class Snackbar: ResponseType()
@@ -20,7 +20,13 @@ open class Event<out T>(private val content: T){
         private set // allow external read only
 
     fun getContentIfNotHandled(): T?{
+
         return if(hasBeenHandled) null else {
+            // it is the way around
+//            if(content is MyResponse){
+//                content.message = null
+//            }
+
             hasBeenHandled = true
             content
         }

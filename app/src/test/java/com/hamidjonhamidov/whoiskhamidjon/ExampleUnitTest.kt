@@ -3,7 +3,6 @@ package com.hamidjonhamidov.whoiskhamidjon
 import org.junit.Test
 
 import org.junit.Assert.*
-import java.lang.StringBuilder
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -58,6 +57,13 @@ class ExampleUnitTest {
 
 
         println(str)
+    }
+
+    @Test
+    fun test3(){
+        val item = "dflkdjf - 5/5"
+        println(item.substring(0, item.lastIndexOf("-")).trim())
+        println(item.substring(item.lastIndexOf("-")+1, item.length).trim())
     }
 }
 

@@ -11,11 +11,9 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_app.AboutAppFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.AboutMeFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactTypeFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.persojal_projects.PersonalProjectsFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.setListenersForLeftDrawer
 
 object MainNavigation {
 

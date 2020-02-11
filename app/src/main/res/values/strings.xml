@@ -13,4 +13,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_name">Full name:</string>
+    <string name="khamidjon_khamidov">Khamidjon Khamidov</string>
+    <string name="age">Birth date:</string>
+    <string name="my_birth_date">September 14, 1998</string>
+    <string name="experience">Experience:</string>
+    <string name="loading">Loading…</string>
+    <string name="hobbies">Hobbies:</string>
+    <string name="chess_and_table_tennis">Chess and Table tennis</string>
+    <string name="education">Education:</string>
+    <string name="tuit"><u>TUIT</u></string>
+    <string name="lsbu"><u>LSBU</u></string>
+    <string name="and">and</string>
+    <string name="address">Address:</string>
+    <string name="phone_number">Phone number:</string>
+    <string name="email">Email:</string>
+    <string name="my_higher_education">My Higher Education</string>
+    <string name="subjects">Subjects:</string>
+    <string name="scores">Scores:</string>
 </resources>

@@ -55,20 +55,20 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
                         shouldUseSnackbar = false
                     )
                 } else {
-                    doCacheRequest()
+                    doCacheRequest(Constants.REFRESHED_FROM_CACHE)
                 }
             }
         } else {
-            doCacheRequest()
+            doCacheRequest(Constants.REFRESHED_FROM_CACHE)
         }
     }
 
-    fun doCacheRequest(){
+    fun doCacheRequest(message: String? = null){
         coroutineScope.launch {
             delay(TESTING_CACHE_DELAY)
 
             // view only cache and return
-            createCacheRequestAndReturn()
+            createCacheRequestAndReturn(message)
         }
     }
 
@@ -153,7 +153,6 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
 
     @UseExperimental(InternalCoroutinesApi::class)
     private fun initNewJob(): Job{
-        Log.d(TAG, "initNewJob: called.")
         job = Job() // create new job
         job.invokeOnCompletion(onCancelling = true, invokeImmediately = true, handler = object: CompletionHandler{
             override fun invoke(cause: Throwable?) {
@@ -175,7 +174,7 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
 
     fun asLiveData() = result as LiveData<DataState<ViewStateType>>
 
-    abstract suspend fun createCacheRequestAndReturn()
+    abstract suspend fun createCacheRequestAndReturn(message: String? = null)
 
     abstract suspend fun handleNetworkSuccessResponse(response: NetworkSuccessResponse<ResponseObject>)
 

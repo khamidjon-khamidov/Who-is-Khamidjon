@@ -29,14 +29,14 @@ constructor(
 
                     result.postValue(
                         GenericNetworkResponse
-                            .create(data = aboutMe)
+                            .create(data = aboutMe, strResponse = "Successfully Refreshed from Firebase!")
                     )
                 }
             }
             .addOnCanceledListener {
                 result.postValue(
                     GenericNetworkResponse
-                        .create(data = null, strResponse = "Couldn't load from firebase")
+                        .create(data = null, strResponse = "Couldn't Refresh from Firebase")
                 )
             }
 

@@ -12,7 +12,7 @@ sealed class GenericNetworkResponse<T> {
             NetworkErrorResponse(errorMessage = error.message ?: "Unknown error")
 
 
-        fun <T> create(response: Response<T>):
+        fun <T> create(response: Response<T>, strAdMessage: String? = null):
                 GenericNetworkResponse<T>{
             if(response.isSuccessful){
                 val body = response.body()
@@ -22,7 +22,7 @@ sealed class GenericNetworkResponse<T> {
                 else if(response.code() == 401){
                     NetworkErrorResponse("401 unathorized. You are not Khamidjon")
                 } else {
-                    NetworkSuccessResponse(body = body)
+                    NetworkSuccessResponse(body = body, successResponseMessage = strAdMessage)
                 }
             } else {
                 val msg = response.errorBody()?.toString()
@@ -39,7 +39,7 @@ sealed class GenericNetworkResponse<T> {
         fun <T> create(data: T? = null, strResponse: String? = null):
         GenericNetworkResponse<T>{
             if(data!=null){
-                return NetworkSuccessResponse(body = data)
+                return NetworkSuccessResponse(body = data, successResponseMessage = strResponse)
             }
             else if (strResponse!=null){
                 return NetworkErrorResponse<T>(
@@ -54,6 +54,6 @@ sealed class GenericNetworkResponse<T> {
 
 class NetworkEmptyResponse<T> : GenericNetworkResponse<T> ()
 
-data class NetworkSuccessResponse<T>(val body: T): GenericNetworkResponse<T>()
+data class NetworkSuccessResponse<T>(val body: T, val successResponseMessage: String? = null): GenericNetworkResponse<T>()
 
 data class NetworkErrorResponse<T> (val errorMessage: String): GenericNetworkResponse<T>()

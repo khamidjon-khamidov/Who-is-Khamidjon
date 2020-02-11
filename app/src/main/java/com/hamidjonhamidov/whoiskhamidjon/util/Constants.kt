@@ -7,6 +7,18 @@ import org.json.JSONObject
 
 object Constants {
 
+    // here infos about me
+    const val FULL_NAME = "Khamidjon Khamidov"
+    const val BIRTH_DATE = "Sep 14, 1998"
+    const val PROGRAMMING_EXPERIENCE_DATE = "05/09/2017 08:00:00.000"
+
+
+    // inside app comments
+    const val TUIT = "Tashkent University of\nInformation Technologies"
+    const val LSBU = "London South Bank\nUniversity"
+    const val NO_DATA_AVAILABLE = "Sorry, No Data Available!"
+    const val SUCCESSULLY_UPLOADED = "Successfully Uploaded!"
+
     // these are menu item ids for sliding navigation
     val menuItems = listOf(
         R.id.menu_item_about_me,
@@ -24,6 +36,7 @@ object Constants {
 
 
     // network response to requests
+    const val REFRESHED_FROM_CACHE = "Refreshed from Local Cache!"
     const val UNABLE_TO_CONNECT_TO_INTERNET = "Sorry, NETWORK UNAVAILABLE!"
     const val SLOW_NETWORK = "Sorry, Network is so slow!"
     const val ERROR_UNKNOWN = "Sorry, Unknown error!"

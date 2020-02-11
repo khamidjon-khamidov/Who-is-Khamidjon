@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
+import com.bumptech.glide.RequestManager
 import com.google.firebase.firestore.*
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.database.AboutMeModel
@@ -26,6 +27,9 @@ class MainActivity : BaseActivity(),
     lateinit var providerFactory: ViewModelProviderFactory
 
 
+    @Inject
+    lateinit var requestManager: RequestManager
+
     lateinit var slidingRootNav: SlidingRootNav
 
 
@@ -41,8 +45,15 @@ class MainActivity : BaseActivity(),
         // this is navigation for main
         setUpNavigation(savedInstanceState)
 //        }
+    }
 
-
+    override fun shouldStartShimmerInFragment(shouldAnimate: Boolean) {
+        if(shouldAnimate){
+            shimmer_full_screen_container?.startShimmer()
+        }
+        else {
+            shimmer_full_screen_container?.stopShimmer()
+        }
     }
 
     private fun setUpNavigation(savedInstanceState: Bundle?) {
@@ -65,18 +76,6 @@ class MainActivity : BaseActivity(),
     private val TAG = "AppDebug"
     private fun setListeners() {
 
-//            mdB = FirebaseFirestore.getInstance()
-//            mdB.collection("about_me")
-//                .get()
-//                .addOnSuccessListener {
-//
-//                    Log.d("AppDebug", "MainActivity: onEvent: hello")
-//                    for (docs in it.documents) {
-//                        val aboutMe = docs.toObject(AboutMeModel::class.java)
-//                        Log.d("AppDebug", "MainActivity: setListeners: $aboutMe")
-//                    }
-//                }
-
         menu_item_source_code.setOnClickListener {
             slidingRootNav.closeMenu()
             // todo
@@ -95,6 +94,10 @@ class MainActivity : BaseActivity(),
 
     override fun getVMProviderFactory(): ViewModelProviderFactory {
         return providerFactory
+    }
+
+    override fun getGlideRequestManager(): RequestManager {
+        return requestManager
     }
 }
 

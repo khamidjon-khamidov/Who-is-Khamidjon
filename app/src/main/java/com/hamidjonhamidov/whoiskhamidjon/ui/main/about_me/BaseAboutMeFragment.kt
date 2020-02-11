@@ -11,6 +11,7 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDependencyProvider
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel.AboutMeViewModel
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants.ABOUT_ME_VIEW_STATE_BUNDLE_KEY
+import com.hamidjonhamidov.whoiskhamidjon.util.JobManager
 
 abstract class BaseAboutMeFragment : Fragment(), Injectable {
     private val TAG = "AppDebug"
@@ -33,6 +34,8 @@ abstract class BaseAboutMeFragment : Fragment(), Injectable {
             (savedInstanceState[ABOUT_ME_VIEW_STATE_BUNDLE_KEY] as AboutMeViewState?)?.let { viewState ->
                 viewModel.setViewState(viewState)
             }
+
+            Log.d(TAG, "BaseAboutMeFragment: onCreate: savedInstance!=null")
         }
     }
 
@@ -40,6 +43,8 @@ abstract class BaseAboutMeFragment : Fragment(), Injectable {
     fun isViewModelInitialized() = ::viewModel.isInitialized
 
     override fun onSaveInstanceState(outState: Bundle) {
+
+        Log.d(TAG, "BaseAboutMeFragment: onSaveInstanceState: called")
 
         if(isViewModelInitialized()){
             outState.putParcelable(
