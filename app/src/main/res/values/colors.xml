@@ -14,5 +14,9 @@
     <color name="blue">#068DF8</color>
     <color name="black_transparent">#99000000</color>
 
+    <color name="btn_gradient_color_end">#bdc3c7</color>
+    <color name="btn_gradient_color_start">#777A7E</color>
+
+
 
 </resources>

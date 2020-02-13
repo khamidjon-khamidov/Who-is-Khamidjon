@@ -2,16 +2,11 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import android.view.View
 import androidx.appcompat.widget.Toolbar
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.findNavController
 import com.bumptech.glide.RequestManager
-import com.google.firebase.firestore.*
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.models.database.AboutMeModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseActivity
-import com.hamidjonhamidov.whoiskhamidjon.util.Constants.menuItems
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.ViewModelProviderFactory
 import com.yarolegovich.slidingrootnav.SlidingRootNav
@@ -23,42 +18,71 @@ import javax.inject.Inject
 class MainActivity : BaseActivity(),
     MainDependencyProvider {
 
+    lateinit var toolbarForDrawer: Toolbar
+    lateinit var toolbarForNavBack: Toolbar
+
+    var locked = false
+
     @Inject
     lateinit var providerFactory: ViewModelProviderFactory
-
 
     @Inject
     lateinit var requestManager: RequestManager
 
     lateinit var slidingRootNav: SlidingRootNav
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        if (savedInstanceState == null) {
         // setting up toolbar
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        toolbarForDrawer = findViewById(R.id.my_toolbar)
+        toolbarForNavBack = findViewById(R.id.my_toolbar2)
+
+        setSupportActionBar(toolbarForDrawer)
 
         // this is navigation for main
-        setUpNavigation(savedInstanceState)
-//        }
+        setUpNavigation(savedInstanceState, R.id.menu_item_about_me)
     }
 
     override fun shouldStartShimmerInFragment(shouldAnimate: Boolean) {
         if(shouldAnimate){
+            shimmer_full_screen_container.visibility = View.VISIBLE
             shimmer_full_screen_container?.startShimmer()
         }
         else {
+            shimmer_full_screen_container.visibility = View.GONE
             shimmer_full_screen_container?.stopShimmer()
         }
     }
 
-    private fun setUpNavigation(savedInstanceState: Bundle?) {
+    override fun lockDrawer(isLocked: Boolean, menuId: Int) {
+
+        if(locked == isLocked) return
+
+        locked = isLocked
+
+        if(isLocked){
+            toolbarForDrawer.visibility = View.GONE
+            toolbarForNavBack.visibility = View.VISIBLE
+
+            slidingRootNav.isMenuLocked = true
+            setSupportActionBar(toolbarForNavBack)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setDisplayShowHomeEnabled(true)
+        } else {
+            toolbarForDrawer.visibility = View.VISIBLE
+            toolbarForNavBack.visibility = View.GONE
+
+            setSupportActionBar(toolbarForDrawer)
+            setUpNavigation(null, menuId)
+        }
+
+    }
+
+    private fun setUpNavigation(savedInstanceState: Bundle?, id: Int) {
         slidingRootNav = SlidingRootNavBuilder(this)
-            .withToolbarMenuToggle(toolbar)
+            .withToolbarMenuToggle(toolbarForDrawer)
             .withMenuOpened(false)
             .withContentClickableWhenMenuOpened(true)
             .withSavedState(savedInstanceState)
@@ -67,13 +91,13 @@ class MainActivity : BaseActivity(),
 
         MainNavigation.setSelected(
             this,
-            R.id.menu_item_about_me
+            id
         )
         setListeners()
+
+
     }
 
-
-    private val TAG = "AppDebug"
     private fun setListeners() {
 
         menu_item_source_code.setOnClickListener {

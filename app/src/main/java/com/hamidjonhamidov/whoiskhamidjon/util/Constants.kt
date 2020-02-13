@@ -31,8 +31,8 @@ object Constants {
         R.id.menu_item_exit
     )
 
-    // these are for AboutMe constants
     val ABOUT_ME_VIEW_STATE_BUNDLE_KEY = "ABOUT_ME_VIEW_STATE_BUNDLE_KEY"
+    val CONTACT_ME_VIEW_STATE_BUNDLE_KEY = "CONTACT_ME_VIEW_STATE_BUNDLE_KEY"
 
 
     // network response to requests
@@ -50,11 +50,15 @@ object Constants {
     const val NETWORK_TIMEOUT = 6000L
 
 
+    // permission constants
+    const val SMS_PERMISSION_REQUEST_CODE = 34340
+
     fun isNetworkError(msg: String) =
         when {
             msg.contains(SLOW_NETWORK) -> true
             else -> false
         }
+
 
     private val TAG = "AppDebug"
     fun parseDetailJsonResponse(rawJson: String?): String{
@@ -70,6 +74,7 @@ object Constants {
         }
         return ""
     }
+
 
     fun isPaginationDone(errorResponse: String?): Boolean{
         // if error response = '{"detail":"Invalid page."}' then pagination is done

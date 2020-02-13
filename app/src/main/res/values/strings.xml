@@ -31,4 +31,8 @@
     <string name="my_higher_education">My Higher Education</string>
     <string name="subjects">Subjects:</string>
     <string name="scores">Scores:</string>
+    <string name="send_message">Send Message</string>
+    <string name="send_email">Send Email</string>
+    <string name="give_me_a_call">Give Me A Call</string>
+    <string name="back_arrow">back arrow</string>
 </resources>

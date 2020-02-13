@@ -1,17 +1,29 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 
 import com.hamidjonhamidov.whoiskhamidjon.R
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo.phoneNumber
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_EMAIL
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_MESSAGE
+import com.hamidjonhamidov.whoiskhamidjon.util.Constants
+import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
+import kotlinx.android.synthetic.main.fragment_contact_type.*
 
-class ContactTypeFragment : Fragment() {
+class ContactTypeFragment : BaseContactMeFragment() {
 
     private val TAG = "AppDebug"
 
@@ -32,11 +44,41 @@ class ContactTypeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initialize()
+        activity?.let {
+            it as AppCompatActivity
+            it.supportActionBar?.setTitle("Contact Me")
+        }
+
+        stateChangeListener.lockDrawer(false, R.id.menu_item_contact)
+        stateChangeListener.shouldStartShimmerInFragment(false)
+        setLeftDrawerListeners()
+
+        initializeButtons()
     }
 
-    fun initialize(){
-        setLeftDrawerListeners()
+    fun initializeButtons(){
+        btn_send_message_contact_type.setOnClickListener{
+            viewModel.setContactType(TYPE_SEND_MESSAGE)
+            findNavController().navigate(R.id.action_contactTypeFragment_to_contactFragment)
+        }
+
+        btn_send_email_contact_type.setOnClickListener{
+            viewModel.setContactType(TYPE_SEND_EMAIL)
+            findNavController().navigate(R.id.action_contactTypeFragment_to_contactFragment)
+        }
+
+        btn_call_me_contact_type.setOnClickListener{
+            val myIntent = Intent(Intent.ACTION_DIAL)
+            val uri = "tel:$phoneNumber"
+            myIntent.data = Uri.parse(uri)
+            startActivity(myIntent)
+
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MainNavigation.setSelected(activity!! as MainActivity, R.id.menu_item_contact)
     }
 
     override fun onDestroy() {
@@ -44,3 +86,24 @@ class ContactTypeFragment : Fragment() {
         Log.d(TAG, "ContactTypeFragment: onDestroy: ")
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,8 +14,11 @@ import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.database.AboutMeModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.displaySnackbar
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.DateUtil
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent.*
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants
+import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.OnSnackbarClicked
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import kotlinx.android.synthetic.main.fragment_about_me.*
@@ -69,6 +72,11 @@ class AboutMeFragment : BaseAboutMeFragment() {
 
 
         stateChangeListener.shouldStartShimmerInFragment(true)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MainNavigation.setSelected(activity!! as MainActivity, R.id.menu_item_about_me)
     }
 
     private fun initializeBottomsheet() {
@@ -154,6 +162,7 @@ class AboutMeFragment : BaseAboutMeFragment() {
 
                 viewState.aboutMeFields.aboutMeModel?.let { aboutMeModel ->
                     updateView(aboutMeModel)
+                    updatePersonalInfo(aboutMeModel)
                 }
             }
 
@@ -168,6 +177,11 @@ class AboutMeFragment : BaseAboutMeFragment() {
         tv_address_info_about_me.setText(aboutMeModel.address)
         tv_phone_info_about_me.setText(aboutMeModel.phone_number)
         tv_email_info_about_me.setText(aboutMeModel.email)
+    }
+
+    fun updatePersonalInfo(aboutMeModel: AboutMeModel){
+        PersonalInfo.phoneNumber = aboutMeModel.phone_number
+        PersonalInfo.email = aboutMeModel.email
     }
 
     private fun initializeExperiencePeriod() {

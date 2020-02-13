@@ -3,6 +3,11 @@ package com.hamidjonhamidov.whoiskhamidjon.ui
 import android.app.Activity
 import android.content.Context
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import com.google.android.material.snackbar.Snackbar
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
@@ -28,7 +33,6 @@ fun Activity.displayErrorDialog(message: String){
     message.hashCode()
     // todo
 }
-
 
 
 

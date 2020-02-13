@@ -1,20 +1,40 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me
 
-import android.content.Context
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.telephony.SmsManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.hamidjonhamidov.whoiskhamidjon.R
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo.email
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo.phoneNumber
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_EMAIL
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_MESSAGE
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.SendEmailFields
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.SendMessageFields
+import com.hamidjonhamidov.whoiskhamidjon.util.Constants.SMS_PERMISSION_REQUEST_CODE
+import kotlinx.android.synthetic.main.fragment_contact.*
+import java.lang.Exception
 
 
-class ContactFragment : Fragment() {
+class ContactFragment : BaseContactMeFragment() {
 
     private val TAG = "AppDebug"
+
+    private var contactType = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +51,183 @@ class ContactFragment : Fragment() {
     }
 
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
+
+        stateChangeListener.lockDrawer(true, R.id.menu_item_contact)
+
+        contactType = viewModel.viewState.value?.contactType ?: TYPE_SEND_MESSAGE
+
+        activity?.let {
+            it as AppCompatActivity
+            it.supportActionBar?.setTitle(
+                if (contactType == TYPE_SEND_MESSAGE)
+                    "Send Message"
+                else
+                    "Send Email"
+
+            )
+        }
+
+        updateView()
+        listenEditText()
+        listenSendButton()
+    }
+
+    private fun listenSendButton() {
+        btn_send_contact_me.setOnClickListener{
+            when(contactType){
+                TYPE_SEND_MESSAGE -> {
+                    if(isSmsPermissionGranted()){
+                        sendSms(phoneNumber, et_send_contact_me.text.toString())
+                        findNavController().popBackStack()
+                    } else {
+                        askSmsPermission()
+                    }
+
+                }
+
+                TYPE_SEND_EMAIL -> {
+                    sendEmail(email, et_send_contact_me.text.toString())
+                }
+            }
+        }
+    }
+
+    private fun sendEmail(email: String, message: String) {
+        val myIntent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:$email"))
+        myIntent.putExtra(Intent.EXTRA_TEXT, message)
+        startActivity(Intent.createChooser(myIntent, "Choose Email App"))
+        findNavController().popBackStack()
+    }
+
+    private fun askSmsPermission() {
+        ActivityCompat.requestPermissions(activity!!, arrayOf(Manifest.permission.SEND_SMS), SMS_PERMISSION_REQUEST_CODE)
+    }
+
+    private fun sendSms(number: String, message: String) {
+        try{
+            val smsManager = SmsManager.getDefault()
+            smsManager.sendTextMessage(number, null, message, null, null)
+            Toast.makeText(activity!!, "Sending requested!", Toast.LENGTH_SHORT).show()
+        }catch (e: Exception){
+            Toast.makeText(activity!!, "Sending Failed!", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun isSmsPermissionGranted() =
+        ContextCompat.checkSelfPermission(activity!!, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED
+
+    private fun listenEditText() {
+        et_send_contact_me?.addTextChangedListener(object : TextWatcher{
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                btn_send_contact_me.isEnabled = !s.isNullOrEmpty()
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+        })
+    }
+
+    private fun updateView() {
+        if(contactType== TYPE_SEND_MESSAGE){
+            et_send_contact_me.hint = "Write Your Message"
+            btn_send_contact_me.text = getString(R.string.send_message)
+            et_send_contact_me.setText(viewModel.viewState.value?.sendMessageFields?.message ?: "")
+        }
+        else{
+            et_send_contact_me.hint = "Write Your Email"
+            btn_send_contact_me.text = getString(R.string.send_email)
+            et_send_contact_me.setText(viewModel.viewState.value?.sendEmailFields?.message ?: "")
+        }
+
+        if(et_send_contact_me.text.isNullOrEmpty()){
+            btn_send_contact_me.isEnabled = false
+        }
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                findNavController().popBackStack()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if(contactType == TYPE_SEND_MESSAGE){
+            viewModel.setSendMessageFields(
+                SendMessageFields(
+                    et_send_contact_me.text.toString()
+                )
+            )
+        } else {
+            viewModel.setSendEmailFields(
+                SendEmailFields(
+                    et_send_contact_me.text.toString()
+                )
+            )
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "ContactFragment: onDestroy: ")
     }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when(requestCode){
+            SMS_PERMISSION_REQUEST_CODE -> {
+                if(grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED && isSmsPermissionGranted()){
+                    Toast.makeText(activity!!, "Permission Granted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(activity!!, "Sorry, you haven't granted permission", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

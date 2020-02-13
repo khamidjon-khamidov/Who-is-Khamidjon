@@ -4,4 +4,6 @@ interface DataStateChangeListener {
     fun onDataStateChange(dataState: DataState<*>?)
 
     fun shouldStartShimmerInFragment(shouldAnimate: Boolean)
+
+    fun lockDrawer(isLocked: Boolean, menuId: Int)
 }
