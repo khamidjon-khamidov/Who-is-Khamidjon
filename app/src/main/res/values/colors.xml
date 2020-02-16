@@ -16,7 +16,8 @@
 
     <color name="btn_gradient_color_end">#bdc3c7</color>
     <color name="btn_gradient_color_start">#777A7E</color>
-
+    <color name="grey">#bdc3c7</color>
+    <color name="light_grey">#DCDCDC</color>
 
 
 </resources>

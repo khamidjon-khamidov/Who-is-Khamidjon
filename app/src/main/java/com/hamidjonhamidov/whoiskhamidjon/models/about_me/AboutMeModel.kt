@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.models.database
+package com.hamidjonhamidov.whoiskhamidjon.models.about_me
 
 import android.os.Parcelable
 import android.util.Log
@@ -7,7 +7,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

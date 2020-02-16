@@ -80,6 +80,10 @@ class MainActivity : BaseActivity(),
 
     }
 
+    override fun closeLeftNavigationMenu() {
+        slidingRootNav?.closeMenu()
+    }
+
     private fun setUpNavigation(savedInstanceState: Bundle?, id: Int) {
         slidingRootNav = SlidingRootNavBuilder(this)
             .withToolbarMenuToggle(toolbarForDrawer)

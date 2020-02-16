@@ -44,13 +44,6 @@ abstract class BaseViewModel<StateEvent, ViewState> : ViewModel() {
 
     fun setViewState(viewState: ViewState) {
         Log.d(TAG, "BaseViewModel: setViewState: ")
-//        val job = Job()
-//        CoroutineScope(IO + job).launch {
-//            delay(10000)
-//            withContext(Main) {
-//                Log.d(TAG, "BaseViewModel: setViewState: ${(_viewState.value as AboutMeViewState).aboutMeFields.aboutMeModel}")
-//            }
-//        }
         _viewState.value = viewState
     }
 

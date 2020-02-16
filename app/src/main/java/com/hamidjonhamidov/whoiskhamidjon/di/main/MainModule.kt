@@ -1,9 +1,9 @@
 package com.hamidjonhamidov.whoiskhamidjon.di.main
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.hamidjonhamidov.whoiskhamidjon.repository.AboutMeRepository
+import com.hamidjonhamidov.whoiskhamidjon.repository.MainRepository
 import com.hamidjonhamidov.whoiskhamidjon.requests.firebase.RequestFromFirebase
-import com.hamidjonhamidov.whoiskhamidjon.requests.persistence.AboutMeDao
+import com.hamidjonhamidov.whoiskhamidjon.requests.persistence.MainDao
 import com.hamidjonhamidov.whoiskhamidjon.requests.persistence.AppDatabase
 import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
 import dagger.Module
@@ -16,13 +16,9 @@ class MainModule {
     @Provides
     fun provideFirebaseFireStore() = FirebaseFirestore.getInstance()
 
-//    @MainScope
-//    @Provides
-//    fun provideMainMenuItemsClicked
-
     @MainScope
     @Provides
-    fun provideAboutMeDao(db: AppDatabase) = db.getAboutMeDao()
+    fun provideAboutMeDao(db: AppDatabase) = db.getMainMeDao()
 
     @MainScope
     @Provides
@@ -32,9 +28,9 @@ class MainModule {
     @Provides
     fun provideAboutMeRepository(
         requestFromFirebase: RequestFromFirebase,
-        aboutMeDao: AboutMeDao,
+        mainDao: MainDao,
         sessionManager: SessionManager
     ) =
-        AboutMeRepository(requestFromFirebase, aboutMeDao, sessionManager)
+        MainRepository(requestFromFirebase, mainDao, sessionManager)
 
 }

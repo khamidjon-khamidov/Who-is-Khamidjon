@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.models.database.AboutMeModel
+import com.hamidjonhamidov.whoiskhamidjon.models.about_me.AboutMeModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.displaySnackbar
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.DateUtil
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
@@ -202,15 +202,6 @@ class AboutMeFragment : BaseAboutMeFragment() {
         super.onDestroyView()
 
         job.cancel()
-
-        // todo
-//        viewModel.setAboutMeFields(
-//            AboutMeFields(
-//                AboutMeModel(
-//                    
-//                )
-//            )
-//        )
     }
 
     override fun onDestroy() {

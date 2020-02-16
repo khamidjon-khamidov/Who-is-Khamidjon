@@ -178,5 +178,8 @@ dependencies {
 
     // shimmering animation
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // show more text
+    implementation 'com.github.mahimrocky:ShowMoreText:1.0.2'
 }
 apply plugin: 'com.google.gms.google-services'

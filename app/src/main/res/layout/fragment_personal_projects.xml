@@ -1,19 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.main.persojal_projects.PersonalProjectsFragment"
-    android:background="@color/white">
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="PersonalProjectsFragment" />
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tv_pr_1_title_personal_projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_name"
+                    android:textColor="@color/green"
+                    android:textSize="24sp"
+                    />
+
+                <com.skyhope.showmoretextview.ShowMoreTextView
+                    android:id="@+id/tv_pr1_show_more_personal_projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_more_1"
+                    android:textSize="18sp"/>
+
+                <Button
+                    android:id="@+id/btn_show_more_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_ripple_effect"
+                    android:text="@string/go_to_app"
+                    android:textColor="@color/blue"
+                    android:textSize="17sp"
+                    android:padding="1dp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tv_pr_2_title_personal_projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calculator_photovault"
+                    android:textColor="@color/green"
+                    android:textSize="24sp"
+                    />
+
+                <com.skyhope.showmoretextview.ShowMoreTextView
+                    android:id="@+id/tv_pr2_show_more_personal_projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_more_2"
+                    android:textSize="18sp"/>
+
+                <Button
+                    android:id="@+id/btn_show_more_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_ripple_effect"
+                    android:text="@string/go_to_app"
+                    android:textColor="@color/blue"
+                    android:textSize="17sp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/tv_pr_3_title_personal_projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/english_uzbek_dictionary"
+                    android:textColor="@color/green"
+                    android:textSize="24sp"
+                    />
+
+                <com.skyhope.showmoretextview.ShowMoreTextView
+                    android:id="@+id/tv_pr3_show_more_personal_projects"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_more_3"
+                    android:textSize="18sp"/>
+
+                <Button
+                    android:id="@+id/btn_show_more_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_ripple_effect"
+                    android:text="@string/go_to_app"
+                    android:textColor="@color/blue"
+                    android:textSize="17sp"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

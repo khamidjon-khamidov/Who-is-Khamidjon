@@ -6,4 +6,6 @@ interface DataStateChangeListener {
     fun shouldStartShimmerInFragment(shouldAnimate: Boolean)
 
     fun lockDrawer(isLocked: Boolean, menuId: Int)
+
+    fun closeLeftNavigationMenu()
 }

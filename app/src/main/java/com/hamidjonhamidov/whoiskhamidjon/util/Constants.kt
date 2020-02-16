@@ -33,7 +33,7 @@ object Constants {
 
     val ABOUT_ME_VIEW_STATE_BUNDLE_KEY = "ABOUT_ME_VIEW_STATE_BUNDLE_KEY"
     val CONTACT_ME_VIEW_STATE_BUNDLE_KEY = "CONTACT_ME_VIEW_STATE_BUNDLE_KEY"
-
+    val SKILLS_LIST_VIEW_STATE_BUNDLE_KEY = "ABOUT_ME_VIEW_STATE_BUNDLE_KEY"
 
     // network response to requests
     const val REFRESHED_FROM_CACHE = "Refreshed from Local Cache!"

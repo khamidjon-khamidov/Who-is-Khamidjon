@@ -2,7 +2,7 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import com.hamidjonhamidov.whoiskhamidjon.repository.AboutMeRepository
+import com.hamidjonhamidov.whoiskhamidjon.repository.MainRepository
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseViewModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent
@@ -17,7 +17,7 @@ class AboutMeViewModel
 @Inject
 constructor(
 //    val sessionManager: SessionManager,
-    val aboutMeRepository: AboutMeRepository
+    val mainRepository: MainRepository
 ): BaseViewModel<AboutMeStateEvent, AboutMeViewState>(){
 
     private val TAG = "AppDebug"
@@ -26,7 +26,7 @@ constructor(
         return when(stateEvent){
             is GetAboutMeStateEvent -> {
                 Log.d(TAG, "AboutMeViewModel: handleStateEvent: GetAboutMeStateEvent")
-                aboutMeRepository.getAboutMeInfo()
+                mainRepository.getAboutMeInfo()
             }
 
             is None -> {
@@ -52,7 +52,7 @@ constructor(
     }
 
     fun cancelActiveJobs(){
-        aboutMeRepository.cancelActiveJobs()
+        mainRepository.cancelActiveJobs()
         handlePendingData() // hide progress bar
     }
 

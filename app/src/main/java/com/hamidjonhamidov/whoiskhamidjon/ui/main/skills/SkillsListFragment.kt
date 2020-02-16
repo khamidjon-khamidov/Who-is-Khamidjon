@@ -6,15 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hamidjonhamidov.whoiskhamidjon.R
+import com.hamidjonhamidov.whoiskhamidjon.models.skills.SkillModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListAdapter.SkillClickListener
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent.GetSkillsListStateEvent
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
+import com.hamidjonhamidov.whoiskhamidjon.util.TopSpacingItemDecoration
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
+import kotlinx.android.synthetic.main.fragment_skills_list.*
 
-class SkillsListFragment : Fragment(), View.OnClickListener {
+class SkillsListFragment : BaseSkillsFragment(), SkillClickListener{
 
     private val TAG = "AppDebug"
+
+    private lateinit var recyclerAdapter: SkillsListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,60 +37,113 @@ class SkillsListFragment : Fragment(), View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_skills_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initialize()
-    }
 
-    fun initialize(){
-        setLeftDrawerListeners()
-    }
+        stateChangeListener.lockDrawer(false, R.id.menu_item_skills)
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.menu_item_about_me -> {
-                findNavController().popBackStack()
-                activity?.let {
-                    MainNavigation.setSelected(it as MainActivity, v.id)
-                }
-            }
-
-            R.id.menu_item_skills -> {
-                activity?.let {
-                    MainNavigation.setSelected(it as MainActivity, v.id)
-                }
-            }
-
-            R.id.menu_item_personal_projects -> {
-                findNavController().popBackStack()
-                findNavController().navigate(R.id.action_aboutMeFragment_to_personalProjectsFragment)
-                activity?.let {
-                    MainNavigation.setSelected(it as MainActivity, v.id)
-                }
-            }
-
-            R.id.menu_item_about_app -> {
-                findNavController().navigate(R.id.action_aboutMeFragment_to_aboutAppFragment)
-                activity?.let {
-                    MainNavigation.setSelected(it as MainActivity, v.id)
-                }
-            }
-
-            R.id.menu_item_contact -> {
-                findNavController().navigate(R.id.action_contactTypeFragment_to_contactFragment)
-                activity?.let {
-                    MainNavigation.setSelected(it as MainActivity, v.id)
-                }
-            }
+        activity?.let {
+            it as AppCompatActivity
+            it.supportActionBar?.setTitle("My Skills")
         }
+        Log.d(TAG, "SkillsListFragment: onViewCreated: ")
+
+        setLeftDrawerListeners()
+        initRecyclerView()
+
+        if(viewModel.viewState.value?.skillsListFields?.skillsList==null){
+            subscribeObservers()
+            viewModel.setStateEvent(GetSkillsListStateEvent())
+        } else {
+            updateView(viewModel.viewState.value!!.skillsListFields.skillsList)
+        }
+    }
+
+    private fun updateView(skillsList: List<SkillModel>?) {
+        skillsList?.let { recyclerAdapter.submitList(it) }
+    }
+
+    private fun subscribeObservers() {
+        Log.d(TAG, "SkillsListFragment: subscribeObservers: 1")
+
+        viewModel.dataState.observe(viewLifecycleOwner, Observer { dataState->
+            Log.d(TAG, "SkillsListFragment: subscribeObservers: 2")
+            if(dataState!=null){
+                dataState.data?.dataReceived?.getContentIfNotHandled()?.skillsListFields?.let {
+                    Log.d(TAG,
+                        "SkillsListFragment: subscribeObservers: skillsListFields: ${it.skillsList}")
+
+                    viewModel.setSkillsListFields(it)
+                    stateChangeListener.onDataStateChange(dataState)
+                }
+            }
+        })
+
+        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState->
+            if(viewState != null){
+                Log.d(TAG, "SkillsListFragment: subscribeObservers: 3")
+
+                viewState.skillsListFields.skillsList?.let { skillsList ->
+                    Log.d(TAG, "SkillsListFragment: subscribeObservers: size: ${skillsList.size} ")
+                    updateView(skillsList)
+                    recyclerAdapter.preloadGlideImages(skillsList)
+                }
+            }
+        })
+    }
+
+    private fun initRecyclerView() {
+        rv_skills_list.apply {
+            layoutManager = LinearLayoutManager(this@SkillsListFragment.context)
+            val topSpacingItemDecoration = TopSpacingItemDecoration(30)
+            removeItemDecoration(topSpacingItemDecoration)
+            addItemDecoration(topSpacingItemDecoration)
+
+            recyclerAdapter = SkillsListAdapter(
+                dependencyProvider.getGlideRequestManager(),
+                this@SkillsListFragment
+            )
+
+            adapter = recyclerAdapter
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        stateChangeListener.shouldStartShimmerInFragment(false)
+        MainNavigation.setSelected(activity!! as MainActivity, R.id.menu_item_skills)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "SkillsListFragment: onDestroy: ")
     }
+
+    override fun onSkillClick(pos: Int, skill: SkillModel) {
+        viewModel.setCurrentSelectedItemPosition(pos)
+        findNavController().navigate(R.id.action_skillsListFragment_to_skillsDetailsFragment)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

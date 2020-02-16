@@ -56,6 +56,7 @@ class ContactFragment : BaseContactMeFragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
+        stateChangeListener.closeLeftNavigationMenu()
         stateChangeListener.lockDrawer(true, R.id.menu_item_contact)
 
         contactType = viewModel.viewState.value?.contactType ?: TYPE_SEND_MESSAGE

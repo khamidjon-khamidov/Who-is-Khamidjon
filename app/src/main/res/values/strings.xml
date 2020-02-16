@@ -35,4 +35,13 @@
     <string name="send_email">Send Email</string>
     <string name="give_me_a_call">Give Me A Call</string>
     <string name="back_arrow">back arrow</string>
+    <string name="see_more">See more</string>
+    <string name="image">Image</string>
+    <string name="sorry_content_unavailable_for_know">Sorry, content unavailable for know!</string>
+    <string name="show_more_1">This is my last application in which you can find info about me. For this app, I used a lot of features of android as well as clean architecture code to load data from internet and save it to database cache memory. It also uses other latest features like navigation components and dagger2, MVI architecture and so on.</string>
+    <string name="show_more_2">Calculator Vault is used to save your data secretly from others. One interesting feature of it is that any group of data can be saved with different passcodes. In this app, I used different kinds of animation to attract users. I also used fingerprint authentication.</string>
+    <string name="calculator_photovault">Calculator PhotoVault</string>
+    <string name="show_more_3">This is my memorable app as it is the first mobile real-world app ever. Although I don\'t use many features of app development, when I published I got more than 1000 downloads. In this app, I just used simple features like webview</string>
+    <string name="english_uzbek_dictionary">English-Uzbek Dictionary</string>
+    <string name="go_to_app">Go to App</string>
 </resources>
