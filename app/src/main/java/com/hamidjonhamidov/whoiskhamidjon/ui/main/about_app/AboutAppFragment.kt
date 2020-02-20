@@ -9,9 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
-import com.hamidjonhamidov.whoiskhamidjon.util.Constants
-import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 
 class AboutAppFragment : Fragment() {

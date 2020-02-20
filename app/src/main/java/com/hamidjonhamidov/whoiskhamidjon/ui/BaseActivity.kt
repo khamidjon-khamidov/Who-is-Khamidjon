@@ -1,8 +1,10 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui
 
 import android.util.Log
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
+import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.OnSnackbarClicked
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -11,7 +13,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-abstract class BaseActivity: DaggerAppCompatActivity(), DataStateChangeListener
+abstract class BaseActivity: DaggerAppCompatActivity(),
+    DataStateChangeListener
 {
     private val TAG = "AppDebug"
 
@@ -22,6 +25,8 @@ abstract class BaseActivity: DaggerAppCompatActivity(), DataStateChangeListener
         Log.d(TAG, "BaseActivity: onDataStateChange: called")
         dataState?.let {
             GlobalScope.launch(Main) {
+
+                displayProgressBar(it.loading.isLoading)
 
                 it.error?.let { errorEvent->
                     handleStateError(errorEvent)
@@ -39,7 +44,9 @@ abstract class BaseActivity: DaggerAppCompatActivity(), DataStateChangeListener
         }
     }
 
+    abstract fun getParentViewForSnackbar(): View
 
+    abstract fun displayProgressBar(shouldShowProgressBar: Boolean)
 
     private fun handleStateResponse(event: Event<MyResponse>){
         event.getContentIfNotHandled()?.let{
@@ -47,7 +54,7 @@ abstract class BaseActivity: DaggerAppCompatActivity(), DataStateChangeListener
             when(it.responseType){
                 is ResponseType.Snackbar ->{
                     it.message?.let{ message ->
-                        displaySnackbar(root_activity, message, "OK", object : OnSnackbarClicked{
+                        displaySnackbar(getParentViewForSnackbar(), message, "OK", object : OnSnackbarClicked{
                             override fun onSnackbarClick(snackbar: Snackbar) {
 
                             }

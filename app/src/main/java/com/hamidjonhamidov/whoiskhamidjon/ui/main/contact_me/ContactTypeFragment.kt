@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,11 +14,10 @@ import androidx.navigation.fragment.findNavController
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo.phoneNumber
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_EMAIL
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_MESSAGE
-import com.hamidjonhamidov.whoiskhamidjon.util.Constants
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
+import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import kotlinx.android.synthetic.main.fragment_contact_type.*
 
@@ -44,13 +42,12 @@ class ContactTypeFragment : BaseContactMeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.let {
-            it as AppCompatActivity
-            it.supportActionBar?.setTitle("Contact Me")
-        }
 
-        stateChangeListener.lockDrawer(false, R.id.menu_item_contact)
-        stateChangeListener.shouldStartShimmerInFragment(false)
+        setActionBarTitle("Contact Me")
+
+        mainStateChangeListener.lockDrawer(false, R.id.menu_item_contact)
+        setLeftDrawerListeners()
+
         setLeftDrawerListeners()
 
         initializeButtons()

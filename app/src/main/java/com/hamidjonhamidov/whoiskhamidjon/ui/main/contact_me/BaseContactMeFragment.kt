@@ -6,7 +6,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.hamidjonhamidov.whoiskhamidjon.di.Injectable
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDependencyProvider
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.viewmodel.ContactMeViewModel
@@ -19,6 +20,8 @@ abstract class BaseContactMeFragment: Fragment(), Injectable {
     lateinit var dependencyProvider: MainDependencyProvider
 
     lateinit var stateChangeListener: DataStateChangeListener
+
+    lateinit var mainStateChangeListener: MainDataStateChangeListener
 
     lateinit var viewModel: ContactMeViewModel
 
@@ -66,6 +69,12 @@ abstract class BaseContactMeFragment: Fragment(), Injectable {
 
         try {
             stateChangeListener = context as DataStateChangeListener
+        } catch (e : ClassCastException){
+            Log.d(TAG, "BaseContactMeFragment: onAttach: $context must implement")
+        }
+
+        try {
+            mainStateChangeListener = context as MainDataStateChangeListener
         } catch (e : ClassCastException){
             Log.d(TAG, "BaseContactMeFragment: onAttach: $context must implement")
         }

@@ -44,4 +44,10 @@
     <string name="show_more_3">This is my memorable app as it is the first mobile real-world app ever. Although I don\'t use many features of app development, when I published I got more than 1000 downloads. In this app, I just used simple features like webview</string>
     <string name="english_uzbek_dictionary">English-Uzbek Dictionary</string>
     <string name="go_to_app">Go to App</string>
+    <string name="home">Home</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+
+    <string name="not_deleted">Unfortunately, as this api is fake, it hasn\'t been deleted in our servers. This is for design purposes only!</string>
+    <string name="not_created">Bear in mind that this post hasn\'t originally been created in the database and server as this api is fake. Sorry for the inconvenience!</string>
 </resources>

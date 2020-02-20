@@ -4,20 +4,15 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.di.Injectable
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDependencyProvider
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel.AboutMeViewModel
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants.ABOUT_ME_VIEW_STATE_BUNDLE_KEY
-import com.hamidjonhamidov.whoiskhamidjon.util.JobManager
 
 abstract class BaseAboutMeFragment : Fragment(), Injectable {
     private val TAG = "AppDebug"
@@ -25,6 +20,8 @@ abstract class BaseAboutMeFragment : Fragment(), Injectable {
     lateinit var dependencyProvider: MainDependencyProvider
 
     lateinit var stateChangeListener: DataStateChangeListener
+
+    lateinit var mainStateChangeListener: MainDataStateChangeListener
 
     lateinit var viewModel: AboutMeViewModel
 
@@ -79,6 +76,15 @@ abstract class BaseAboutMeFragment : Fragment(), Injectable {
 
         try{
             stateChangeListener = context as DataStateChangeListener
+        }catch (e: java.lang.ClassCastException){
+            Log.d(
+                TAG,
+                "BaseAboutMeFragment: onAttach: $context must implement DataStateChangeListener"
+            )
+        }
+
+        try{
+            mainStateChangeListener = context as MainDataStateChangeListener
         }catch (e: java.lang.ClassCastException){
             Log.d(
                 TAG,

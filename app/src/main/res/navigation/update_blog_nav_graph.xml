@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_update_blog"
+    app:startDestination="@id/updatePostFragment">
+
+    <fragment
+        android:id="@+id/updatePostFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.UpdatePostFragment"
+        android:label="fragment_update_post"
+        tools:layout="@layout/fragment_update_post" />
+</navigation>

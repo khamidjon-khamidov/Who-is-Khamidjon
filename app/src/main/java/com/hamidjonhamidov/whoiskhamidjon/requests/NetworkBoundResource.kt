@@ -102,16 +102,19 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
     }
 
     suspend fun handleNetworkCall(response: GenericNetworkResponse<ResponseObject>){
+        Log.d(TAG, "NetworkBoundResource: handleNetworkCall: $response")
         when(response){
             is NetworkSuccessResponse -> {
                 handleNetworkSuccessResponse(response)
             }
 
             is NetworkErrorResponse -> {
+                Log.d(TAG, "NetworkBoundResource: handleNetworkCall: er error=$response.errorMessage")
                 onErrorReturn(response.errorMessage, false, true)
             }
 
             is NetworkEmptyResponse -> {
+                Log.d(TAG, "NetworkBoundResource: handleNetworkCall: er empty")
                 onErrorReturn("HTTP 204. Returned NOTHING", true, false)
             }
         }

@@ -18,6 +18,8 @@
     <color name="btn_gradient_color_start">#777A7E</color>
     <color name="grey">#bdc3c7</color>
     <color name="light_grey">#DCDCDC</color>
+    <color name="tealDark">#0094DE</color>
+    <color name="mediumGrey">#7d7d7d</color>
 
 
 </resources>

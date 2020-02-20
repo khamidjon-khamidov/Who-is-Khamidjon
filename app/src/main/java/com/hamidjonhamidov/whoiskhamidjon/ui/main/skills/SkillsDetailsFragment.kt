@@ -3,7 +3,6 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -13,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.skills.SkillModel
+import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
+import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import kotlinx.android.synthetic.main.fragment_skills_details.*
 
 class SkillsDetailsFragment : BaseSkillsFragment() {
@@ -37,22 +38,17 @@ class SkillsDetailsFragment : BaseSkillsFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
+        mainStateChangeListener.lockDrawer(true, R.id.menu_item_skills)
 
-        stateChangeListener.closeLeftNavigationMenu()
-        stateChangeListener.lockDrawer(true, R.id.menu_item_skills)
 
         curItemId = viewModel.viewState.value?.currentSelectedItemPosition ?: -1
         currentItem = viewModel.viewState.value?.skillsListFields?.skillsList?.get(curItemId)
 
-        activity?.let {
-            it as AppCompatActivity
-            if(curItemId!=-1){
-                it.supportActionBar?.setTitle(currentItem?.name?:"Error")
-            }
-        }
+        setActionBarTitle(currentItem?.name?:"Error")
 
         updateView()
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
@@ -74,6 +70,8 @@ class SkillsDetailsFragment : BaseSkillsFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+//        mainStateChangeListener.lockDrawer(false, R.id.menu_item_contact)
+//        setLeftDrawerListeners()
         Log.d(TAG, "SkillsDetailsFragment: onDestroy: ")
     }
 }

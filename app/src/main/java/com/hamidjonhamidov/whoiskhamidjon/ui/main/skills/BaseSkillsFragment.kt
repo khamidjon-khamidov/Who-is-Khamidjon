@@ -6,10 +6,9 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.hamidjonhamidov.whoiskhamidjon.di.Injectable
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDependencyProvider
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel.AboutMeViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel.AboutMeViewModel_Factory
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.viewmodel.SkillsViewModel
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants.SKILLS_LIST_VIEW_STATE_BUNDLE_KEY
@@ -21,6 +20,8 @@ abstract class BaseSkillsFragment : Fragment(), Injectable {
     lateinit var dependencyProvider: MainDependencyProvider
 
     lateinit var stateChangeListener: DataStateChangeListener
+
+    lateinit var mainStateChangeListener: MainDataStateChangeListener
 
     lateinit var viewModel: SkillsViewModel
 
@@ -68,6 +69,15 @@ abstract class BaseSkillsFragment : Fragment(), Injectable {
 
         try{
             stateChangeListener = context as DataStateChangeListener
+        }catch (e: java.lang.ClassCastException){
+            Log.d(
+                TAG,
+                "BaseSkillsFragment: onAttach: $context must implement DataStateChangeListener"
+            )
+        }
+
+        try{
+            mainStateChangeListener = context as MainDataStateChangeListener
         }catch (e: java.lang.ClassCastException){
             Log.d(
                 TAG,

@@ -1,12 +1,16 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.RequestManager
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsActivity
+import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.ViewModelProviderFactory
 import com.yarolegovich.slidingrootnav.SlidingRootNav
@@ -16,7 +20,7 @@ import kotlinx.android.synthetic.main.menu_left_drawer.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
-    MainDependencyProvider {
+    MainDependencyProvider, MainDataStateChangeListener {
 
     lateinit var toolbarForDrawer: Toolbar
     lateinit var toolbarForNavBack: Toolbar
@@ -70,6 +74,7 @@ class MainActivity : BaseActivity(),
             setSupportActionBar(toolbarForNavBack)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setDisplayShowHomeEnabled(true)
+
         } else {
             toolbarForDrawer.visibility = View.VISIBLE
             toolbarForNavBack.visibility = View.GONE
@@ -81,7 +86,7 @@ class MainActivity : BaseActivity(),
     }
 
     override fun closeLeftNavigationMenu() {
-        slidingRootNav?.closeMenu()
+        slidingRootNav.closeMenu()
     }
 
     private fun setUpNavigation(savedInstanceState: Bundle?, id: Int) {
@@ -97,28 +102,9 @@ class MainActivity : BaseActivity(),
             this,
             id
         )
-        setListeners()
-
-
     }
 
-    private fun setListeners() {
 
-        menu_item_source_code.setOnClickListener {
-            slidingRootNav.closeMenu()
-            // todo
-        }
-
-        menu_item_personal_posts.setOnClickListener{
-            slidingRootNav.closeMenu()
-            // todo
-        }
-
-        menu_item_exit.setOnClickListener {
-            finish()
-        }
-
-    }
 
     override fun getVMProviderFactory(): ViewModelProviderFactory {
         return providerFactory
@@ -126,6 +112,12 @@ class MainActivity : BaseActivity(),
 
     override fun getGlideRequestManager(): RequestManager {
         return requestManager
+    }
+
+    override fun getParentViewForSnackbar() = root_activity
+
+    override fun displayProgressBar(shouldShowProgressBar: Boolean) {
+        progress_bar.visibility = if(shouldShowProgressBar) View.VISIBLE else View.GONE
     }
 }
 

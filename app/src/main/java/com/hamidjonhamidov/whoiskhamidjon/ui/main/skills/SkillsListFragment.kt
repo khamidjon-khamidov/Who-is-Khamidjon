@@ -2,7 +2,6 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,15 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.skills.SkillModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListAdapter.SkillClickListener
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent.GetSkillsListStateEvent
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.TopSpacingItemDecoration
+import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import kotlinx.android.synthetic.main.fragment_skills_list.*
 
@@ -43,12 +41,10 @@ class SkillsListFragment : BaseSkillsFragment(), SkillClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        stateChangeListener.lockDrawer(false, R.id.menu_item_skills)
+        setActionBarTitle("My Skills")
+        mainStateChangeListener.lockDrawer(false, R.id.menu_item_skills)
+        setLeftDrawerListeners()
 
-        activity?.let {
-            it as AppCompatActivity
-            it.supportActionBar?.setTitle("My Skills")
-        }
         Log.d(TAG, "SkillsListFragment: onViewCreated: ")
 
         setLeftDrawerListeners()
@@ -113,7 +109,6 @@ class SkillsListFragment : BaseSkillsFragment(), SkillClickListener{
 
     override fun onResume() {
         super.onResume()
-        stateChangeListener.shouldStartShimmerInFragment(false)
         MainNavigation.setSelected(activity!! as MainActivity, R.id.menu_item_skills)
     }
 

@@ -1,8 +1,6 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui
+package com.hamidjonhamidov.whoiskhamidjon.ui.main
 
-interface DataStateChangeListener {
-    fun onDataStateChange(dataState: DataState<*>?)
-
+interface MainDataStateChangeListener {
     fun shouldStartShimmerInFragment(shouldAnimate: Boolean)
 
     fun lockDrawer(isLocked: Boolean, menuId: Int)

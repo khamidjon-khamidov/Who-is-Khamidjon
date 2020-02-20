@@ -17,10 +17,7 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.DateUtil
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent.*
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo
-import com.hamidjonhamidov.whoiskhamidjon.util.Constants
-import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
-import com.hamidjonhamidov.whoiskhamidjon.util.OnSnackbarClicked
-import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
+import com.hamidjonhamidov.whoiskhamidjon.util.*
 import kotlinx.android.synthetic.main.fragment_about_me.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
@@ -50,17 +47,13 @@ class AboutMeFragment : BaseAboutMeFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.let {
-            it as AppCompatActivity
-            it.supportActionBar?.setTitle("About Me")
-        }
         Log.d(TAG, "AboutMeFragment: onViewCreated: ")
+
+        setActionBarTitle("About Me")
 
         setLeftDrawerListeners()
         initializeBottomsheet()
         initializeExperiencePeriod()
-
-
 
 
         if (viewModel.viewState.value?.aboutMeFields?.aboutMeModel == null) {
@@ -70,15 +63,19 @@ class AboutMeFragment : BaseAboutMeFragment() {
             updateView(viewModel.viewState.value!!.aboutMeFields.aboutMeModel!!)
         }
 
-
-        stateChangeListener.shouldStartShimmerInFragment(true)
     }
 
     override fun onResume() {
         super.onResume()
+        mainStateChangeListener.shouldStartShimmerInFragment(true)
         MainNavigation.setSelected(activity!! as MainActivity, R.id.menu_item_about_me)
+
     }
 
+    override fun onPause() {
+        super.onPause()
+        mainStateChangeListener.shouldStartShimmerInFragment(false)
+    }
     private fun initializeBottomsheet() {
         // this is for bottomSheet
         mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_about_me)

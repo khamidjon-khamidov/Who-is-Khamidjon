@@ -164,11 +164,6 @@ constructor(
                         object : LiveData<SkillsViewState>() {
                             override fun onActive() {
                                 super.onActive()
-                                if (it.size > 0)
-                                    Log.d(TAG, "MainRepository: onActive: ${it[0].id}")
-
-                                else
-                                    Log.d(TAG, "MainRepository: onActive: size = 0")
 
                                 value = SkillsViewState(
                                     SkillsListFields(

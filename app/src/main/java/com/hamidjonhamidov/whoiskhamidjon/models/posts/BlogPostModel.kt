@@ -12,16 +12,16 @@ class BlogPostModel(
 
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
-    var id: Int,
+    var id: Int? = null,
 
     @ColumnInfo(name = "userId")
-    var userId: Int,
+    var userId: Int? = null,
 
     @ColumnInfo(name = "title")
-    var title: String,
+    var title: String? = null,
 
     @ColumnInfo(name = "body")
-    var body: String
+    var body: String? = null
 
 ): Parcelable{
 

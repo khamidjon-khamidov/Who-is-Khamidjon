@@ -10,8 +10,10 @@
     <corners android:radius="10dp"/>
 
     <gradient
-        android:startColor="@color/transparent"
-        android:endColor="@color/white"
-        android:type="linear"
-        android:angle="270"/>
+        android:startColor="#26F7F7F5"
+        android:centerColor="@color/transparent"
+        android:endColor="#26F7F7F5"
+        android:angle="90"/>
+
+
 </shape>

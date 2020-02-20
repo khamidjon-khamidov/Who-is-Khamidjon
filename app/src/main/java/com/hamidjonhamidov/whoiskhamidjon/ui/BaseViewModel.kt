@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
+import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
@@ -29,7 +30,7 @@ abstract class BaseViewModel<StateEvent, ViewState> : ViewModel() {
         }
 
     fun setStateEvent(event: StateEvent) {
-        Log.d(TAG, "BaseViewModel: setStateEvent: called")
+        Log.d(TAG, "BaseViewModel: setStateEvent: event=$event")
         _stateEvent.value = event
     }
 

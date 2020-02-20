@@ -28,7 +28,6 @@ class AppModule {
     fun provideRequestOptions(): RequestOptions =
         RequestOptions
             .placeholderOf(R.drawable.profile_img_src)
-            .error(R.drawable.profile_img_src)
 
     @Singleton
     @Provides

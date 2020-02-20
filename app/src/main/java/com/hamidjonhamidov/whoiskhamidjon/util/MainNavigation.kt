@@ -2,6 +2,8 @@
 
 package com.hamidjonhamidov.whoiskhamidjon.util
 
+import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.cardview.widget.CardView
@@ -14,31 +16,56 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.AboutMeFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactTypeFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.persojal_projects.PersonalProjectsFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsActivity
+import com.yarolegovich.slidingrootnav.SlidingRootNav
+import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
+import kotlinx.android.synthetic.main.menu_left_drawer.*
 
 object MainNavigation {
 
-    fun setSelected(activity: MainActivity, selectedItem: Int) {
+    fun setSelected(mainActivity: MainActivity, selectedItem: Int) {
         val menuItems = Constants.menuItems
 
         for (item in menuItems) {
-            val cardView = activity.findViewById<CardView>(item)
+            val cardView = mainActivity.findViewById<CardView>(item)
 
             if (item == selectedItem) {
-                cardView.setCardBackgroundColor(activity.resources.getColor(R.color.green))
+                cardView.setCardBackgroundColor(mainActivity.resources.getColor(R.color.green))
             } else {
-                cardView.setCardBackgroundColor(activity.resources.getColor(R.color.colorPrimary))
+                cardView.setCardBackgroundColor(mainActivity.resources.getColor(R.color.colorPrimary))
             }
 
-            activity.slidingRootNav.closeMenu()
+            mainActivity.slidingRootNav.closeMenu()
         }
-
-
     }
 }
 
+
 fun Fragment.setLeftDrawerListeners() {
     val TAG = "AppDebug"
-    activity?.let { it as MainActivity
+
+    activity?.let {
+        it as MainActivity
+
+        it.findViewById<View>(R.id.menu_item_personal_posts)?.let { view ->
+            Log.d(TAG, "MainActivity: setListeners: personalPosts clicked")
+            view.setOnClickListener {
+                val mIntent = Intent(activity!!, BlogPostsActivity::class.java)
+                startActivity(mIntent)
+            }
+        }
+
+        it.findViewById<View>(R.id.menu_item_source_code)?.let { view ->
+            view.setOnClickListener{
+                // todo
+            }
+        }
+
+        it.findViewById<View>(R.id.menu_item_exit)?.let { view ->
+            view.setOnClickListener{
+                activity?.finish()
+            }
+        }
 
         it.findViewById<View>(R.id.menu_item_about_me)?.let { view ->
             view.setOnClickListener { _ ->

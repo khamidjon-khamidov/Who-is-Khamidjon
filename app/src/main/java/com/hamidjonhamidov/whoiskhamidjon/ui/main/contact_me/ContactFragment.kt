@@ -26,6 +26,8 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeView
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.SendEmailFields
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.SendMessageFields
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants.SMS_PERMISSION_REQUEST_CODE
+import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
+import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import kotlinx.android.synthetic.main.fragment_contact.*
 import java.lang.Exception
 
@@ -56,21 +58,12 @@ class ContactFragment : BaseContactMeFragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
 
-        stateChangeListener.closeLeftNavigationMenu()
-        stateChangeListener.lockDrawer(true, R.id.menu_item_contact)
+        mainStateChangeListener.closeLeftNavigationMenu()
+        mainStateChangeListener.lockDrawer(true, R.id.menu_item_contact)
 
         contactType = viewModel.viewState.value?.contactType ?: TYPE_SEND_MESSAGE
 
-        activity?.let {
-            it as AppCompatActivity
-            it.supportActionBar?.setTitle(
-                if (contactType == TYPE_SEND_MESSAGE)
-                    "Send Message"
-                else
-                    "Send Email"
-
-            )
-        }
+        setActionBarTitle( if (contactType == TYPE_SEND_MESSAGE) "Send Message" else "Send Email")
 
         updateView()
         listenEditText()
@@ -185,6 +178,9 @@ class ContactFragment : BaseContactMeFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+
+//        mainStateChangeListener.lockDrawer(false, R.id.menu_item_contact)
+//        setLeftDrawerListeners()
         Log.d(TAG, "ContactFragment: onDestroy: ")
     }
 

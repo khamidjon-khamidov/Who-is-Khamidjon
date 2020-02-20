@@ -11,11 +11,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.fragment.findNavController
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataStateChangeListener
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
-import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import com.skyhope.showmoretextview.ShowMoreTextView
 import kotlinx.android.synthetic.main.fragment_personal_projects.*
@@ -40,24 +39,35 @@ class PersonalProjectsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.let {
-            it as AppCompatActivity
-            it.supportActionBar?.setTitle("My Personal Projects")
-        }
 
-        (activity as DataStateChangeListener).shouldStartShimmerInFragment(false)
+        setActionBarTitle("My Personal Projects")
+
+        (activity as MainDataStateChangeListener).shouldStartShimmerInFragment(false)
+
         initialize()
         updateView()
     }
 
-    fun updateView(){
+    fun updateView() {
         val tv1 = tv_pr1_show_more_personal_projects
         val tv2 = tv_pr2_show_more_personal_projects
         val tv3 = tv_pr3_show_more_personal_projects
 
-        updateShowMoreTv(tv1, btn_show_more_1, "https://play.google.com/store/apps/details?id=${context?.packageName}")
-        updateShowMoreTv(tv2, btn_show_more_2, "https://play.google.com/store/apps/details?id=com.hamidovhamid1998.calculator")
-        updateShowMoreTv(tv3, btn_show_more_3, "https://play.google.com/store/apps/details?id=com.hamidovhamidjondictionary.englishuzbekdictionary100k")
+        updateShowMoreTv(
+            tv1,
+            btn_show_more_1,
+            "https://play.google.com/store/apps/details?id=${context?.packageName}"
+        )
+        updateShowMoreTv(
+            tv2,
+            btn_show_more_2,
+            "https://play.google.com/store/apps/details?id=com.hamidovhamid1998.calculator"
+        )
+        updateShowMoreTv(
+            tv3,
+            btn_show_more_3,
+            "https://play.google.com/store/apps/details?id=com.hamidovhamidjondictionary.englishuzbekdictionary100k"
+        )
     }
 
     private fun updateShowMoreTv(tv: ShowMoreTextView?, btn: Button?, link: String) {
@@ -67,7 +77,7 @@ class PersonalProjectsFragment : Fragment() {
         tv?.setShowMoreColor(Color.BLUE)
         tv?.setShowLessTextColor(Color.BLUE)
 
-        btn?.setOnClickListener{
+        btn?.setOnClickListener {
             val i = Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(link));
             startActivity(i)
@@ -75,7 +85,7 @@ class PersonalProjectsFragment : Fragment() {
     }
 
 
-    fun initialize(){
+    fun initialize() {
         setLeftDrawerListeners()
     }
 
