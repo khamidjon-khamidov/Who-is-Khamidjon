@@ -1,11 +1,9 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me
 
+import android.animation.Animator
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.view.*
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -18,10 +16,12 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent.*
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo
 import com.hamidjonhamidov.whoiskhamidjon.util.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_about_me.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlin.math.max
 
 class AboutMeFragment : BaseAboutMeFragment() {
 
@@ -31,6 +31,9 @@ class AboutMeFragment : BaseAboutMeFragment() {
     lateinit var mBottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     lateinit var job: CompletableJob
 
+    // primitive vars
+    var lastTouchedX = 0.toFloat()
+    var lastTouchedY = 0.toFloat()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +57,7 @@ class AboutMeFragment : BaseAboutMeFragment() {
         setLeftDrawerListeners()
         initializeBottomsheet()
         initializeExperiencePeriod()
+        initializeCircularReveal()
 
 
         if (viewModel.viewState.value?.aboutMeFields?.aboutMeModel == null) {
@@ -64,6 +68,80 @@ class AboutMeFragment : BaseAboutMeFragment() {
         }
 
     }
+
+    private fun initializeCircularReveal() {
+        val circularEnterAnLay = activity?.findViewById<View>(R.id.cl_circular_animation)
+        val circularExitAnLay = activity?.findViewById<View>(R.id.iv_exit_circular)
+
+        iv_profile_picture_about_me?.setOnClickListener {
+
+            val x = id_about_me_fragment?.right
+            val y = id_about_me_fragment?.left
+
+            val startRadius = 0.toFloat()
+            val endRadius = Math.hypot(id_about_me_fragment!!.width.toDouble(), id_about_me_fragment!!.height.toDouble()).toFloat()
+
+            val animator =
+                ViewAnimationUtils.createCircularReveal(
+                    circularEnterAnLay,
+                    x!!,
+                    y!!,
+                    startRadius,
+                    endRadius
+                )
+
+            circularEnterAnLay?.visibility = View.VISIBLE
+            animator.start()
+        }
+
+        circularExitAnLay?.setOnClickListener {
+            val x = id_about_me_fragment?.right
+            val y = id_about_me_fragment?.left
+
+            cl_circular_animation?.setOnClickListener {}
+
+            val startRadius =  max(id_about_me_fragment!!.width, id_about_me_fragment!!.height).toFloat()
+            val endRadius = 0.toFloat()
+
+            val animator =
+                ViewAnimationUtils.createCircularReveal(
+                    circularEnterAnLay,
+                    x!!,
+                    y!!,
+                    startRadius,
+                    endRadius
+                )
+
+            animator.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationRepeat(animation: Animator?) {
+
+                }
+
+                override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
+                    super.onAnimationEnd(animation, isReverse)
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    circularEnterAnLay?.visibility = View.GONE
+                }
+
+                override fun onAnimationCancel(animation: Animator?) {
+
+                }
+
+                override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
+                    super.onAnimationStart(animation, isReverse)
+                }
+
+                override fun onAnimationStart(animation: Animator?) {
+
+                }
+            })
+
+            animator.start()
+        }
+    }
+
 
     override fun onResume() {
         super.onResume()
@@ -170,6 +248,10 @@ class AboutMeFragment : BaseAboutMeFragment() {
 
         dependencyProvider.getGlideRequestManager().load(aboutMeModel.profile_image_url)
             .into(iv_profile_picture_about_me)
+
+        dependencyProvider.getGlideRequestManager().load(aboutMeModel.profile_image_url)
+            .into(activity?.findViewById(R.id.iv_circular_image_itself)!!)
+
 
         tv_address_info_about_me.setText(aboutMeModel.address)
         tv_phone_info_about_me.setText(aboutMeModel.phone_number)

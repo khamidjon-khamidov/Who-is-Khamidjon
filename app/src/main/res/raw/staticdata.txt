@@ -1,0 +1,106 @@
+package com.hamidjonhamidov.whoiskhamidjon.ui.source_code
+
+import com.hamidjonhamidov.whoiskhamidjon.R
+
+
+object StaticData {
+
+    val leafFileList = listOf(
+        PathFile(listOf("whoiskhamidjon", "di", "blog_posts", "BlogFragmentBuildersModule"), R.raw.blogfragmentsbuildersmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "blog_posts", "BlogModule"), R.raw.blogmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "blog_posts", "BlogPostsScope"), R.raw.blogpostsscope),
+        PathFile(listOf("whoiskhamidjon", "di", "blog_posts", "BlogViewModelModule"), R.raw.blogviewmodelmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "main", "MainFragmentBuildersModule"), R.raw.mainfragmentbuildersmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "main", "MainModule"), R.raw.mainmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "main", "MainScope"), R.raw.mainscope),
+        PathFile(listOf("whoiskhamidjon", "di", "main", "MainViewModelModule"), R.raw.mainviewmodelmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "ActivityBuildersModule"), R.raw.activitybuildersmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "AppComponent"), R.raw.appcomponent),
+        PathFile(listOf("whoiskhamidjon", "di", "AppInjector"), R.raw.appinjector),
+        PathFile(listOf("whoiskhamidjon", "di", "AppModule"), R.raw.appmodule),
+        PathFile(listOf("whoiskhamidjon", "di", "Injectable"), R.raw.injectable),
+        PathFile(listOf("whoiskhamidjon", "di", "ViewModelFactoryModule"), R.raw.viewmodelfactoryfodule),
+        PathFile(listOf("whoiskhamidjon", "di", "ViewModelKey"), R.raw.viewmodelkey),
+        PathFile(listOf("whoiskhamidjon", "models", "about_me", "AboutMeModel.kt"), R.raw.aboutmemodel),
+        PathFile(listOf("whoiskhamidjon", "models", "posts", "BlogPostModel"), R.raw.blogpostmodel),
+        PathFile(listOf("whoiskhamidjon", "models", "skills", "SkillModel"), R.raw.skillmodel),
+        PathFile(listOf("whoiskhamidjon", "repository", "BlogRepository"), R.raw.blogrepository),
+        PathFile(listOf("whoiskhamidjon", "repository", "MainRepository"), R.raw.mainrepository),
+        PathFile(listOf("whoiskhamidjon", "requests", "api", "ApiBlogPostsService"), R.raw.apiblogpostsservice),
+        PathFile(listOf("whoiskhamidjon", "requests", "firebase", "FirebaseConstants"), R.raw.firebaseconstants),
+        PathFile(listOf("whoiskhamidjon", "requests", "firebase", "RequestFromFirebase"), R.raw.requestfromfirebase),
+        PathFile(listOf("whoiskhamidjon", "requests", "persistence", "AppDataBase"), R.raw.appdatabase),
+        PathFile(listOf("whoiskhamidjon", "requests", "persistence", "BlogPostsDao"), R.raw.blogpostsdao),
+        PathFile(listOf("whoiskhamidjon", "requests", "persistence", "MainDao"), R.raw.maindao),
+        PathFile(listOf("whoiskhamidjon", "requests", "NetworkBoundResource"), R.raw.networkboundresource),
+        PathFile(listOf("whoiskhamidjon", "session", "SessionManager"), R.raw.sessionmanager),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "about_app", "AboutAppFragment"), R.raw.aboutappfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "about_me", "state", "AboutMeStateEvent"), R.raw.aboutmestateevent),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "about_me", "state", "AboutMeViewState"), R.raw.aboutmeviewstate),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "about_me", "viewmodel", "AboutMeViewModel"), R.raw.aboutmeviewmodel),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "about_me", "AboutMeFragment"), R.raw.aboutmefragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "about_me", "BaseAboutMeFragment"), R.raw.baseaboutmefragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "contact_me", "state", "ContactMeViewState"), R.raw.contactmeviewstate),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "contact_me", "viewmodel", "ContactMeViewModel"), R.raw.contactmeviewmodel),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "contact_me", "BaseContactMeFragment"), R.raw.basecontactmefragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "contact_me", "ContactFragment"), R.raw.contactfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "contact_me", "ContactTypeFragment"), R.raw.contacttypefragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "contact_me", "PersonalInfo"), R.raw.personalinfo),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "personal_projects", "PersonalProjectsFragment"), R.raw.personalprojectsfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "state", "SkillsStateEvent"), R.raw.skillsstateevent),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "state", "SkillsViewState"), R.raw.skillsviewstate),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "viewmodel", "SkillsViewmodel"), R.raw.skillsviewmodel),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "BaseSkillsFragment"), R.raw.baseskillsfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "SkillRecyclerChangeCallback"), R.raw.skillrecyclerchangecallback),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "SkillsDetailsFragment"), R.raw.skillsdetailsfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "SkillsListAdapter"), R.raw.skillslistadapter),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "skills", "SkillsListFragment"), R.raw.skillslistfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "DateUtil"), R.raw.dateutil),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "MainActivity"), R.raw.mainactivity),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "MainDataStateChangeListener"), R.raw.maindatastatechangelistener),
+        PathFile(listOf("whoiskhamidjon", "ui", "main", "MainDependencyProvider"), R.raw.maindependencyprovider),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "fragments_for_posts", "BasePostsFragment"), R.raw.basepostsfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "fragments_for_posts", "BlogPostsFragment"), R.raw.blogpostsfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "fragments_for_posts", "DeletePostFragment"), R.raw.deletepostfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "fragments_for_posts", "UpdatePostFragment"), R.raw.updatepostfragment),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "state", "BlogPostsStateEvent"), R.raw.blogpostsstateevent),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "state", "BlogsPostsViewState"), R.raw.blogspostsviewstate),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "viewmodel", "BlogPostsViewModel"), R.raw.blogpostsviewmodel),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "BlogPostsActivity"), R.raw.blogpostsactivity),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "BlogPostsConstants"), R.raw.blogpostsconstants),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "BlogPostsRecyclerAdapter"), R.raw.blogpostsrecycleradapter),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "PostsDataStateChangeListener"), R.raw.postsdatastatechangelistener),
+        PathFile(listOf("whoiskhamidjon", "ui", "posts", "PostsDependencyProvider"), R.raw.postsdependencyprovider),
+        PathFile(listOf("whoiskhamidjon", "ui", "source_code", "custom_treeview", "Constants"), R.raw.constan),
+
+
+
+    )
+
+
+}
+
+data class PathFile(val paths: List<String>, val resId: Int)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

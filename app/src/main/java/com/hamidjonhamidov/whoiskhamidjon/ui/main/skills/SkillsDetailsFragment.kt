@@ -3,17 +3,11 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import android.view.*
 import androidx.navigation.fragment.findNavController
-
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.skills.SkillModel
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
-import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import kotlinx.android.synthetic.main.fragment_skills_details.*
 
 class SkillsDetailsFragment : BaseSkillsFragment() {
@@ -38,8 +32,9 @@ class SkillsDetailsFragment : BaseSkillsFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        mainStateChangeListener.lockDrawer(true, R.id.menu_item_skills)
 
+        mainStateChangeListener.closeLeftNavigationMenu()
+        mainStateChangeListener.lockDrawer(true, R.id.menu_item_skills)
 
         curItemId = viewModel.viewState.value?.currentSelectedItemPosition ?: -1
         currentItem = viewModel.viewState.value?.skillsListFields?.skillsList?.get(curItemId)
@@ -66,6 +61,12 @@ class SkillsDetailsFragment : BaseSkillsFragment() {
         dependencyProvider.getGlideRequestManager()
             .load(currentItem?.image_url)
             .into(iv_main_skill_details)
+
+
+
+//        val photoView = PhotoViewAttacher(iv_main_skill_details)
+//        photoView.update()
+
     }
 
     override fun onDestroy() {

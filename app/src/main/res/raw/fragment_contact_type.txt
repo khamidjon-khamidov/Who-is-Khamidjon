@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.contact_me.ContactTypeFragment"
+    android:background="@drawable/contact_me"
+    android:orientation="vertical">
+
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="100dp"/>
+
+    <Button
+        android:id="@+id/btn_send_message_contact_type"
+        android:layout_width="250dp"
+        android:shadowRadius="10"
+        android:shadowColor="#fff"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_btn_contact_type"
+        android:text="@string/send_message"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="30dp"/>
+
+
+    <Button
+        android:id="@+id/btn_send_email_contact_type"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_btn_contact_type"
+        android:text="@string/send_email"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="30dp"/>
+
+
+    <Button
+        android:id="@+id/btn_call_me_contact_type"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_btn_contact_type"
+        android:text="@string/give_me_a_call"
+        android:textAllCaps="false"
+        android:textSize="20sp"/>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

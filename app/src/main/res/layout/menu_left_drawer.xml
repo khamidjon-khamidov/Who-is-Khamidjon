@@ -14,6 +14,7 @@
         android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="96dp"
@@ -361,6 +362,7 @@
             android:textStyle="italic"
             android:textColor="@color/yellow"/>
     </LinearLayout>
+
 
 </LinearLayout>
 

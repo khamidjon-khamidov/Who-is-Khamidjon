@@ -2,7 +2,6 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.posts
 
 import android.os.Bundle
 import android.view.View
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.RequestManager
 import com.codingwithmitch.openapi.util.BottomNavController
 import com.codingwithmitch.openapi.util.BottomNavController.*
@@ -11,12 +10,8 @@ import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsConstants.BOTTOM_NAV_BACKSTACK_BUNDLE_KEY
 import com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.BasePostsFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.BlogPostsFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.DeletePostFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.UpdatePostFragment
 import com.hamidjonhamidov.whoiskhamidjon.util.ViewModelProviderFactory
 import kotlinx.android.synthetic.main.activity_blog_posts.*
-import kotlinx.android.synthetic.main.fragment_blog_posts.*
 import javax.inject.Inject
 
 class BlogPostsActivity :

@@ -1,0 +1,43 @@
+package com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview
+
+import android.util.Log
+import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.FILE_TYPE_LEAF
+import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.FILE_TYPE_PACKAGE
+
+class UtilFunctions {
+
+    private val TAG = "AppDebug"
+
+    fun createHierarchyFromStringList(root: FileView, hierList: List<List<String>>) {
+
+        for (eachPath in hierList) {
+
+            var parent = root
+
+            for (childName in eachPath) {
+                var child = returnChild(childName, parent)
+                if (child == null) {
+                    child = FileView(name = childName, type = FILE_TYPE_PACKAGE)
+                    parent.children.add(child)
+
+                    Log.d(TAG, "UtilFunctions: createHierarchyFromStringList: ${childName}")
+                }
+
+                parent = child
+            }
+
+            Log.d(TAG, "UtilFunctions: createHierarchyFromStringList: name := ${parent.name}")
+            parent.type = FILE_TYPE_LEAF
+        }
+    }
+
+
+    private fun returnChild(childName: String, parent: FileView): FileView? {
+        for (child in parent.children) {
+            if (child.name == childName)
+                return child
+        }
+
+        return null
+    }
+}

@@ -1,0 +1,16 @@
+package com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview
+
+import com.hamidjonhamidov.whoiskhamidjon.R
+
+object Constants {
+
+
+    // for file types
+    val FILE_TYPE_BLUE_FILE = 0
+    val FILE_TYPE_PACKAGE = 2
+    val FILE_TYPE_LEAF = 3
+
+    // for open close state in view
+    val STATE_OPENED_IN_VIEW = 4
+    val STATE_CLOSED_IN_VIEW = 5
+}

@@ -1,22 +1,21 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.main
 
-import android.content.Intent
+import android.animation.Animator
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import android.view.View
+import android.view.ViewAnimationUtils
+import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.RequestManager
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseActivity
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsActivity
-import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.ViewModelProviderFactory
 import com.yarolegovich.slidingrootnav.SlidingRootNav
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.menu_left_drawer.*
+import java.lang.Integer.max
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
@@ -49,12 +48,12 @@ class MainActivity : BaseActivity(),
         setUpNavigation(savedInstanceState, R.id.menu_item_about_me)
     }
 
+
     override fun shouldStartShimmerInFragment(shouldAnimate: Boolean) {
-        if(shouldAnimate){
+        if (shouldAnimate) {
             shimmer_full_screen_container.visibility = View.VISIBLE
             shimmer_full_screen_container?.startShimmer()
-        }
-        else {
+        } else {
             shimmer_full_screen_container.visibility = View.GONE
             shimmer_full_screen_container?.stopShimmer()
         }
@@ -62,11 +61,11 @@ class MainActivity : BaseActivity(),
 
     override fun lockDrawer(isLocked: Boolean, menuId: Int) {
 
-        if(locked == isLocked) return
+        if (locked == isLocked) return
 
         locked = isLocked
 
-        if(isLocked){
+        if (isLocked) {
             toolbarForDrawer.visibility = View.GONE
             toolbarForNavBack.visibility = View.VISIBLE
 
@@ -105,7 +104,6 @@ class MainActivity : BaseActivity(),
     }
 
 
-
     override fun getVMProviderFactory(): ViewModelProviderFactory {
         return providerFactory
     }
@@ -117,7 +115,7 @@ class MainActivity : BaseActivity(),
     override fun getParentViewForSnackbar() = root_activity
 
     override fun displayProgressBar(shouldShowProgressBar: Boolean) {
-        progress_bar.visibility = if(shouldShowProgressBar) View.VISIBLE else View.GONE
+        progress_bar.visibility = if (shouldShowProgressBar) View.VISIBLE else View.GONE
     }
 }
 

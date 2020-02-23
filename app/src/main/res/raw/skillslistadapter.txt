@@ -1,0 +1,120 @@
+package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.*
+import com.bumptech.glide.RequestManager
+import com.hamidjonhamidov.whoiskhamidjon.R
+import com.hamidjonhamidov.whoiskhamidjon.models.skills.SkillModel
+import kotlinx.android.synthetic.main.skill_list_item.view.*
+
+class SkillsListAdapter(
+    private val requestManager: RequestManager,
+    private val skillClickListener: SkillClickListener? = null
+): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+
+    private val TAG = "AppDebug"
+
+    val DIFF_CALLBACK = object : DiffUtil.ItemCallback<SkillModel>(){
+        override fun areItemsTheSame(oldItem: SkillModel, newItem: SkillModel): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: SkillModel, newItem: SkillModel): Boolean {
+            return oldItem == newItem
+        }
+    }
+
+    private val differ =
+        AsyncListDiffer(
+            SkillRecyclerChangeCallback(
+                this
+            ),
+            AsyncDifferConfig.Builder(DIFF_CALLBACK).build()
+        )
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return SkillViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.skill_list_item,
+                parent,
+                false
+            ),
+            skillClickListener
+        )
+    }
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        (holder as SkillViewHolder).bind(differ.currentList.get(position))
+    }
+
+    fun preloadGlideImages(
+        list: List<SkillModel>
+    ){
+        for(skill in list){
+            requestManager
+                .load(skill.image_url)
+                .preload()
+        }
+    }
+
+    fun submitList(skillList: List<SkillModel>?){
+        differ.submitList(skillList?.toMutableList())
+    }
+
+    interface SkillClickListener{
+        fun onSkillClick(pos: Int, skill: SkillModel)
+    }
+
+    class SkillViewHolder
+    constructor(itemView: View,
+                private val skillListener: SkillClickListener?)
+        :RecyclerView.ViewHolder(itemView){
+
+        fun bind(item: SkillModel) = with(itemView){
+            itemView.btn_see_more_skills_list_item.setOnClickListener{
+                skillListener?.onSkillClick(adapterPosition, item)
+            }
+
+            itemView.tv_name_skills_list_item.text = item.name
+
+            val temp = item.percentage+"%"
+            itemView.tv_percent_skills_list_item.text = temp
+
+            // here todo change item weight
+            val lay = itemView.cl_weight_yellow_skills_list_item.layoutParams as LinearLayout.LayoutParams
+            lay.weight = item.percentage.toFloat()
+
+            val lay2 = itemView.tv_weight_grey_skills_list_item.layoutParams as LinearLayout.LayoutParams
+            lay2.weight = 100.toFloat() - item.percentage.toFloat()
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

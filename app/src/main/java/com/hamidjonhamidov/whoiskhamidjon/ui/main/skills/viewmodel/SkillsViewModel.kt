@@ -2,7 +2,6 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import com.hamidjonhamidov.whoiskhamidjon.repository.MainRepository
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseViewModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
