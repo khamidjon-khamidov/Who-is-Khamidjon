@@ -154,9 +154,10 @@ object CreateViews {
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
         layParams.leftMargin = leftMargin
+//        layParams.pa = 10
 
         fileNameTv.layoutParams = layParams
-
+        fileNameTv.setPadding(0, 0, 25, 0)
 
         fileNameTv.text = txt
         fileNameTv.textSize = 22f
@@ -172,8 +173,8 @@ object CreateViews {
         val fileTypeIv = ImageView(activity.applicationContext)
         fileTypeIv.layoutParams =
             ViewGroup.LayoutParams(
-                45,
-                45
+                80,
+                80
             )
 
         fileTypeIv.id = View.generateViewId()
@@ -193,8 +194,8 @@ object CreateViews {
         expandIv.id = View.generateViewId()
 
         val layParams = ConstraintLayout.LayoutParams(
-            40,
-            40
+            60,
+            60
         )
 
         layParams.leftMargin = leftMargin

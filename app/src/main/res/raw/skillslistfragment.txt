@@ -2,9 +2,7 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills
 
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -41,6 +39,7 @@ class SkillsListFragment : BaseSkillsFragment(), SkillClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
         setActionBarTitle("My Skills")
         mainStateChangeListener.lockDrawer(false, R.id.menu_item_skills)
         setLeftDrawerListeners()
@@ -121,6 +120,24 @@ class SkillsListFragment : BaseSkillsFragment(), SkillClickListener{
         viewModel.setCurrentSelectedItemPosition(pos)
         findNavController().navigate(R.id.action_skillsListFragment_to_skillsDetailsFragment)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_refresh, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            R.id.menu_item_refresh -> {
+                viewModel.setStateEvent(GetSkillsListStateEvent())
+                return true
+            }
+        }
+
+        return false
+    }
+
 }
 
 

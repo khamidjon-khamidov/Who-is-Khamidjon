@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#546e7a</color>
-    <color name="colorPrimaryDark">#29434e</color>
-    <color name="colorAccent">#819ca9</color>
+    <color name="colorPrimary">#00b0ff</color>
+    <color name="colorPrimaryDark">#0081cb</color>
+    <color name="colorAccent">#fff</color>
 
 <!--    secondary colors-->
     <color name="green">#2AF312</color>
@@ -13,6 +13,7 @@
     <color name="transparent">#0000ffff</color>
     <color name="blue">#068DF8</color>
     <color name="black_transparent">#99000000</color>
+    <color name="light_blue">#63ccff</color>
 
     <color name="btn_gradient_color_end">#bdc3c7</color>
     <color name="btn_gradient_color_start">#777A7E</color>
@@ -20,6 +21,8 @@
     <color name="light_grey">#DCDCDC</color>
     <color name="tealDark">#0094DE</color>
     <color name="mediumGrey">#7d7d7d</color>
+    <color name="red">#ff1744</color>
+    <color name="light_blue_background">#b4ffff</color>
 
 
 </resources>

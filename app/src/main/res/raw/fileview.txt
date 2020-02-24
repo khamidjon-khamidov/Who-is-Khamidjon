@@ -12,6 +12,7 @@ data class FileView(
     var type: Int = FILE_TYPE_PACKAGE,
     val name: String,
     var parent: FileView? = null,
+    var rawId: Int? = null,
     val children: ArrayList<FileView> = ArrayList(),
     var openCloseState: Int = STATE_CLOSED_IN_VIEW,
     var containerCl: ConstraintLayout? = null,

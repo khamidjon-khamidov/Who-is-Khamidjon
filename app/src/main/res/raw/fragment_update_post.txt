@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/update_post_background">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/tv_update_post"
@@ -18,7 +17,7 @@
         android:text="Create New Post"
         android:textSize="30sp"
         android:typeface="serif"
-        android:textColor="#fdf498"
+        android:textColor="@color/blue"
         android:fontFamily="cursive"
         android:textStyle="normal"
         />
@@ -31,7 +30,6 @@
         app:layout_constraintTop_toBottomOf="@id/tv_update_post"
         android:background="@drawable/custom_send_edit_text"
         android:layout_margin="5dp"
-        android:textColorHint="@color/white"
         android:textColor="@color/green"
         android:maxEms="8"
         android:hint="Enter new userId"
@@ -49,7 +47,6 @@
         android:layout_margin="5dp"
         android:hint="Enter new title"
         android:gravity="top"
-        android:textColorHint="@color/white"
         android:textColor="@color/green"
         android:minEms="1"
         android:padding="15dp"/>
@@ -61,7 +58,6 @@
         app:layout_constraintTop_toBottomOf="@id/et_update_title_update_post"
         android:background="@drawable/custom_send_edit_text"
         android:layout_margin="5dp"
-        android:textColorHint="@color/white"
         android:textColor="@color/green"
         android:hint="Enter new body"
         android:gravity="top"

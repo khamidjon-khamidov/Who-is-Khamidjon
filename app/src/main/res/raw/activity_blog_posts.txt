@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.posts.BlogPostsActivity"
-    android:background="@drawable/toolbar_background"
     android:id="@+id/root_blog_post_activity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/tool_bar"
-            android:background="@drawable/toolbar_background"
             app:titleTextColor="@color/green"
             app:layout_scrollFlags="scroll|enterAlways">
 
@@ -58,7 +56,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_gravity="bottom"
-        android:background="@drawable/toolbar_background"
+        android:background="@color/light_blue"
         app:itemTextColor="@color/bottom_nav_selector"
         app:itemIconTint="@color/bottom_nav_selector"
         app:menu="@menu/posts_bottom_navigation_menu"/>

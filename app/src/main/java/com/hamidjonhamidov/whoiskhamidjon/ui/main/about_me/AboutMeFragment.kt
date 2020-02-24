@@ -55,6 +55,7 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "AboutMeFragment: onViewCreated: ")
 
+        setHasOptionsMenu(true)
         setActionBarTitle("About Me")
 
         initilaizeEverything()
@@ -274,12 +275,10 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
 
         dependencyProvider.getGlideRequestManager()
             .load(aboutMeModel.profile_image_url)
-            .placeholder(R.drawable.profile_img_src)
             .into(iv_profile_picture_about_me)
 
         dependencyProvider.getGlideRequestManager()
             .load(aboutMeModel.profile_image_url)
-            .placeholder(R.drawable.profile_img_src)
             .into(activity?.findViewById(R.id.iv_circular_image_itself)!!)
 
         tv_address_info_about_me.setText(aboutMeModel.address)
@@ -305,6 +304,23 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_refresh, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+
+            R.id.menu_item_refresh -> {
+                viewModel.setStateEvent(GetAboutMeStateEvent())
+                return true
+            }
+        }
+
+        return false
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

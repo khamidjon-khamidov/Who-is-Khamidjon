@@ -50,6 +50,9 @@
 
     <string name="not_deleted">Unfortunately, as this api is fake, it hasn\'t been deleted in our servers. This is for design purposes only!</string>
     <string name="not_created">Bear in mind that this post hasn\'t originally been created in the database and server as this api is fake. Sorry for the inconvenience!</string>
+    <string name="expand_all">expand all</string>
+    <string name="reduce_all">reduce all</string>
+    <string name="root_file">Root File</string>
 
 </resources>
 

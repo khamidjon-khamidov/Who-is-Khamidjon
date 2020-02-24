@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,25 +28,17 @@
             android:layout_marginBottom="2dp"
             android:textColor="#000"
             android:textSize="20sp"
-            android:background="@color/white"/>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cv_percentage_view_list_item"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            app:cardElevation="5dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_name_skills_list_item"
-            app:cardCornerRadius="5dp">
-
-
+            android:background="@color/white"
+            tools:ignore="RtlSymmetry" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cv_percentage_view_list_item"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/percentage_shape"
+                app:layout_constraintTop_toBottomOf="@id/tv_name_skills_list_item">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -67,7 +60,7 @@
                             android:text="80%"
                             android:gravity="center_vertical|center_horizontal"
                             android:textSize="40sp"
-                            android:textColor="@color/green"
+                            android:textColor="#3300FF"
                             android:textStyle="italic|bold"/>
 
 
@@ -82,30 +75,13 @@
 
                 </LinearLayout>
 
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/sh_container_skills_list_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:shimmer_duration="5000"
-                    app:shimmer_auto_start="true"
-                    app:shimmer_base_alpha="0.0"
-                    >
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#9FFFFFFF"/>
-
-
-                </com.facebook.shimmer.ShimmerFrameLayout>
-
+            <include
+                android:id="@+id/sh_container_skills_list_item"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                layout="@layout/layout_shimmer_effect"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/btn_see_more_skills_list_item"

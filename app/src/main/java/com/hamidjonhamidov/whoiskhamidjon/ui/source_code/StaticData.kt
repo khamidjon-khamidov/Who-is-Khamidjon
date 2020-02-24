@@ -75,6 +75,8 @@ object StaticData {
         PathFile(listOf("whoiskhamidjon", "ui", "source_code", "custom_treeview", "CreateViews"), R.raw.createviews),
         PathFile(listOf("whoiskhamidjon", "ui", "source_code", "custom_treeview", "FileView"), R.raw.fileview),
         PathFile(listOf("whoiskhamidjon", "ui", "source_code", "custom_treeview", "UtilFunctions"), R.raw.utilfunctions),
+        PathFile(listOf("whoiskhamidjon", "ui", "source_code", "CodeViewActivity"), R.raw.codeviewactivity),
+        PathFile(listOf("whoiskhamidjon", "ui", "source_code", "FileHierarchyExtensions"), R.raw.filehierarchyextensions),
         PathFile(listOf("whoiskhamidjon", "ui", "source_code", "SourceCodeActivity"), R.raw.sourcecodeactivity),
         PathFile(listOf("whoiskhamidjon", "ui", "source_code", "StaticData"), R.raw.staticdata),
         PathFile(listOf("whoiskhamidjon", "ui", "BaseActivity"), R.raw.baseactivity),
@@ -117,6 +119,7 @@ object StaticData {
         PathFile(listOf("res", "drawable", "custom_gradient_button2"), R.raw.custom_gradient_button2),
         PathFile(listOf("res", "drawable", "custom_send_button"), R.raw.custom_send_button),
         PathFile(listOf("res", "drawable", "custom_send_edit_text"), R.raw.custom_send_edit_text),
+        PathFile(listOf("res", "drawable", "dot"), R.raw.dot),
         PathFile(listOf("res", "drawable", "exit_img"), R.raw.exit_img),
         PathFile(listOf("res", "drawable", "expand_default"), R.raw.expand_default),
         PathFile(listOf("res", "drawable", "expand_down"), R.raw.expand_down),
@@ -131,6 +134,7 @@ object StaticData {
         PathFile(listOf("res", "drawable", "ic_launcher_background"), R.raw.ic_launcher_background),
         PathFile(listOf("res", "drawable", "send_btn_default"), R.raw.send_btn_default),
         PathFile(listOf("res", "layout", "activity_blog_posts"), R.raw.activity_blog_posts),
+        PathFile(listOf("res", "layout", "activity_code_view"), R.raw.activity_code_view),
         PathFile(listOf("res", "layout", "activity_main"), R.raw.activity_main),
         PathFile(listOf("res", "layout", "activity_source_code"), R.raw.activity_source_code),
         PathFile(listOf("res", "layout", "blog_post_item"), R.raw.blog_post_item),
@@ -145,9 +149,12 @@ object StaticData {
         PathFile(listOf("res", "layout", "fragment_skills_details"), R.raw.fragment_skills_details),
         PathFile(listOf("res", "layout", "fragment_skills_list"), R.raw.fragment_skills_list),
         PathFile(listOf("res", "layout", "fragment_update_post"), R.raw.fragment_update_post),
+        PathFile(listOf("res", "layout", "layout_shimmer_effect"), R.raw.layout_shimmer_effect),
         PathFile(listOf("res", "layout", "menu_left_drawer"), R.raw.menu_left_drawer),
         PathFile(listOf("res", "layout", "skill_list_item"), R.raw.skill_list_item),
         PathFile(listOf("res", "menu", "info_menu_posts"), R.raw.info_menu_posts),
+        PathFile(listOf("res", "menu", "menu_refresh"), R.raw.menu_refresh),
+        PathFile(listOf("res", "menu", "menu_source_code"), R.raw.menu_source_code),
         PathFile(listOf("res", "menu", "posts_bottom_navigation_menu"), R.raw.posts_bottom_navigation_menu),
         PathFile(listOf("res", "navigation", "delete_blog_nav_graph"), R.raw.delete_blog_nav_graph),
         PathFile(listOf("res", "navigation", "get_blogs_nav_graph"), R.raw.get_blogs_nav_graph),
@@ -155,7 +162,9 @@ object StaticData {
         PathFile(listOf("res", "navigation", "update_blog_nav_graph"), R.raw.update_blog_nav_graph),
         PathFile(listOf("res", "values", "colors"), R.raw.colors),
         PathFile(listOf("res", "values", "strings"), R.raw.strings),
-        PathFile(listOf("res", "values", "styles"), R.raw.styles)
+        PathFile(listOf("res", "values", "styles"), R.raw.styles),
+        PathFile(listOf("gradle", "build.gradle(Project: Who is Khamidjon)"), R.raw.build_gradle_project),
+        PathFile(listOf("gradle", "build.gradle(Module: app)"), R.raw.build_gradle_app)
     )
 
 
