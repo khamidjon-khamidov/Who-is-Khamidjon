@@ -1,315 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:id="@+id/id_about_me_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    android:id="@+id/id_about_me_fragment"
-    >
+    android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_self_image"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_self_img_container_about_me"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/colorPrimary"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="20dp"
-                app:cardBackgroundColor="@color/colorPrimary"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp">
+                app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/iv_profile_picture_about_me"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/profile_img_src"/>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_self_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:foreground="@drawable/glass_like_background_purple"
+                    app:cardBackgroundColor="@color/colorPrimary"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            </androidx.cardview.widget.CardView>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-<!--           full name-->
-            <TextView
-                android:id="@+id/tv_full_name_about_me"
-                android:layout_width="wrap_content"
+                        <ImageView
+                            android:id="@+id/iv_profile_picture_about_me"
+                            android:layout_width="250dp"
+                            android:layout_height="250dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/profile_img_src"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/btn_profile_img_about_me"
+                            android:layout_width="250dp"
+                            android:layout_height="250dp"
+                            android:background="?attr/selectableItemBackground"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <include
+                            android:layout_height="250dp"
+                            android:layout_width="250dp"
+                            android:id="@+id/shimmer_about_me"
+                            layout="@layout/layout_shimmer_effect"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/full_name"
-                app:layout_constraintTop_toBottomOf="@id/card_self_image"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                android:layout_margin="10dp"
+                android:background="@color/colorPrimaryDark"
+                app:layout_constraintTop_toBottomOf="@id/cl_self_img_container_about_me">
 
-            <TextView
-                android:id="@+id/tv_full_name_info_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/khamidjon_khamidov"
-                android:layout_marginEnd="3dp"
-                app:layout_constraintTop_toBottomOf="@id/card_self_image"
-                app:layout_constraintLeft_toRightOf="@id/tv_full_name_about_me"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                />
 
-<!--            birth data-->
-            <TextView
-                android:id="@+id/tv_my_age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/age"
-                app:layout_constraintTop_toBottomOf="@id/tv_full_name_info_about_me"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                <!--           full name-->
+                <TextView
+                    android:id="@+id/tv_full_name_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/full_name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/tv_my_age_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/my_birth_date"
-                app:layout_constraintTop_toBottomOf="@id/tv_full_name_info_about_me"
-                app:layout_constraintLeft_toRightOf="@id/tv_my_age"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                android:layout_marginEnd="3dp"
-                />
+                <TextView
+                    android:id="@+id/tv_full_name_info_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="@string/khamidjon_khamidov"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/tv_full_name_about_me"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_goneMarginStart="10dp" />
 
-<!--            programming experience-->
-            <TextView
-                android:id="@+id/tv_pr_ex_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/experience"
-                app:layout_constraintTop_toBottomOf="@id/tv_my_age_info"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                <!--            birth data-->
+                <TextView
+                    android:id="@+id/tv_my_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/age"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_full_name_info_about_me" />
 
-            <TextView
-                android:id="@+id/tv_pr_ex_info_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/loading"
-                app:layout_constraintTop_toBottomOf="@id/tv_my_age_info"
-                app:layout_constraintLeft_toRightOf="@id/tv_pr_ex_about_me"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                android:layout_marginEnd="3dp"
-                />
+                <TextView
+                    android:id="@+id/tv_my_age_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="@string/my_birth_date"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/tv_my_age"
+                    app:layout_constraintTop_toBottomOf="@id/tv_full_name_info_about_me"
+                    app:layout_goneMarginStart="10dp" />
 
-<!--            hobbies-->
-            <TextView
-                android:id="@+id/tv_hobbies_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hobbies"
-                app:layout_constraintTop_toBottomOf="@id/tv_pr_ex_info_about_me"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                <!--            programming experience-->
+                <TextView
+                    android:id="@+id/tv_pr_ex_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/experience"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_age_info" />
 
-            <TextView
-                android:id="@+id/tv_hobbies_info_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chess_and_table_tennis"
-                app:layout_constraintTop_toBottomOf="@id/tv_pr_ex_info_about_me"
-                app:layout_constraintLeft_toRightOf="@id/tv_hobbies_about_me"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                android:layout_marginEnd="3dp"
-                />
+                <TextView
+                    android:id="@+id/tv_pr_ex_info_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/tv_pr_ex_about_me"
+                    app:layout_constraintTop_toBottomOf="@id/tv_my_age_info"
+                    app:layout_goneMarginStart="10dp" />
 
-<!--            higher education-->
-            <TextView
-                android:id="@+id/tv_education_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/education"
-                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                <!--            hobbies-->
+                <TextView
+                    android:id="@+id/tv_hobbies_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/hobbies"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_pr_ex_info_about_me" />
 
-            <TextView
-                android:id="@+id/tv_education_info_about_me_tuit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tuit"
-                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
-                app:layout_constraintLeft_toRightOf="@id/tv_education_about_me"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:textSize="20sp"
-                android:textColor="@color/blue"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="3dp"
-                />
+                <TextView
+                    android:id="@+id/tv_hobbies_info_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="@string/chess_and_table_tennis"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/tv_hobbies_about_me"
+                    app:layout_constraintTop_toBottomOf="@id/tv_pr_ex_info_about_me"
+                    app:layout_goneMarginStart="10dp" />
 
-            <TextView
-                android:id="@+id/tv_education_info_about_me_and"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/and"
-                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
-                app:layout_constraintLeft_toRightOf="@id/tv_education_info_about_me_tuit"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="3dp"
-                />
+                <!--            higher education-->
+                <TextView
+                    android:id="@+id/tv_education_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/education"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me" />
 
-            <TextView
-                android:id="@+id/tv_education_info_about_me_lsbu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lsbu"
-                app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
-                app:layout_constraintLeft_toRightOf="@id/tv_education_info_about_me_and"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:textSize="20sp"
-                android:textColor="@color/blue"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="3dp"
-                />
-<!--            address-->
-            <TextView
-                android:id="@+id/tv_address_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/address"
-                app:layout_constraintTop_toBottomOf="@id/tv_education_info_about_me_tuit"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                <TextView
+                    android:id="@+id/tv_education_info_about_me_tuit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/tuit"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toRightOf="@id/tv_education_about_me"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
+                    app:layout_goneMarginStart="10dp" />
 
-            <TextView
-                android:id="@+id/tv_address_info_about_me"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:text="@string/loading"
-                app:layout_constraintTop_toBottomOf="@id/tv_education_info_about_me_tuit"
-                app:layout_constraintLeft_toRightOf="@id/tv_address_about_me"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginEnd="10dp"
-                />
+                <TextView
+                    android:id="@+id/tv_education_info_about_me_and"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/and"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toRightOf="@id/tv_education_info_about_me_tuit"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
+                    app:layout_goneMarginStart="10dp" />
 
-<!--            phone number-->
-            <TextView
-                android:id="@+id/tv_phone_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/phone_number"
-                app:layout_constraintTop_toBottomOf="@id/tv_address_info_about_me"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                <TextView
+                    android:id="@+id/tv_education_info_about_me_lsbu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="@string/lsbu"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toRightOf="@id/tv_education_info_about_me_and"
+                    app:layout_constraintTop_toBottomOf="@id/tv_hobbies_info_about_me"
+                    app:layout_goneMarginStart="10dp" />
+                <!--            address-->
+                <TextView
+                    android:id="@+id/tv_address_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/address"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_education_info_about_me_tuit" />
 
-            <TextView
-                android:id="@+id/tv_phone_info_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/loading"
-                app:layout_constraintTop_toBottomOf="@id/tv_address_info_about_me"
-                app:layout_constraintLeft_toRightOf="@id/tv_phone_about_me"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                android:layout_marginEnd="3dp"
-                />
+                <TextView
+                    android:id="@+id/tv_address_info_about_me"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/tv_address_about_me"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_education_info_about_me_tuit"
+                    app:layout_goneMarginStart="10dp" />
 
-<!--            email-->
-            <TextView
-                android:id="@+id/tv_email_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/email"
-                app:layout_constraintTop_toBottomOf="@id/tv_phone_info_about_me"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="10dp"
-                />
+                <!--            phone number-->
+                <TextView
+                    android:id="@+id/tv_phone_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_address_info_about_me" />
 
-            <TextView
-                android:id="@+id/tv_email_info_about_me"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/loading"
-                app:layout_constraintTop_toBottomOf="@id/tv_phone_info_about_me"
-                app:layout_constraintLeft_toRightOf="@id/tv_email_about_me"
-                app:layout_goneMarginStart="10dp"
-                android:layout_marginTop="30dp"
-                android:textSize="20sp"
-                android:textColor="@color/green"
-                android:layout_marginStart="20dp"
-                android:textStyle="bold"
-                android:layout_marginEnd="3dp"
-                />
+                <TextView
+                    android:id="@+id/tv_phone_info_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/tv_phone_about_me"
+                    app:layout_constraintTop_toBottomOf="@id/tv_address_info_about_me"
+                    app:layout_goneMarginStart="10dp" />
+
+                <!--            email-->
+                <TextView
+                    android:id="@+id/tv_email_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_phone_info_about_me" />
+
+                <TextView
+                    android:id="@+id/tv_email_info_about_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="3dp"
+                    android:text="@string/loading"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/tv_email_about_me"
+                    app:layout_constraintTop_toBottomOf="@id/tv_phone_info_about_me"
+                    app:layout_goneMarginStart="10dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -320,69 +350,69 @@
         android:layout_width="match_parent"
         android:layout_height="450dp"
         android:background="@android:color/darker_gray"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-        app:behavior_hideable="true"
+        android:clipToPadding="true"
         android:elevation="20dp"
-        android:clipToPadding="true">
+        app:behavior_hideable="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
 
         <TextView
             android:id="@+id/tv_uni_name_about_me_btm_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@string/my_higher_education"
+            android:background="@color/black_transparent"
             android:gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="@string/my_higher_education"
+            android:textColor="@color/green"
             android:textSize="23sp"
             android:textStyle="italic|bold"
-            android:textColor="@color/green"
-            android:background="@color/black_transparent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_btm_subject_about_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/subjects"
-            app:layout_constraintTop_toBottomOf="@id/tv_uni_name_about_me_btm_sheet"
             android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/subjects"
             android:textColor="@color/yellow"
-            android:textSize="26sp"/>
+            android:textSize="26sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_uni_name_about_me_btm_sheet" />
 
         <TextView
             android:id="@+id/tv_btm_score_about_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/scores"
-            app:layout_constraintTop_toBottomOf="@id/tv_uni_name_about_me_btm_sheet"
-            android:layout_marginEnd="15dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="15dp"
+            android:text="@string/scores"
             android:textColor="@color/yellow"
-            android:textSize="26sp"/>
+            android:textSize="26sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_uni_name_about_me_btm_sheet" />
 
         <TextView
             android:id="@+id/tv_btm_subject_list_about_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_btm_subject_about_me"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_btm_subject_about_me" />
 
         <TextView
             android:id="@+id/tv_btm_score_list_about_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_btm_score_about_me"
-            app:layout_constraintLeft_toLeftOf="@id/tv_btm_score_about_me"
-            app:layout_constraintRight_toRightOf="@id/tv_btm_score_about_me"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            app:layout_constraintLeft_toLeftOf="@id/tv_btm_score_about_me"
+            app:layout_constraintRight_toRightOf="@id/tv_btm_score_about_me"
+            app:layout_constraintTop_toBottomOf="@id/tv_btm_score_about_me" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

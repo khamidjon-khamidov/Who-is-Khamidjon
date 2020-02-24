@@ -173,8 +173,8 @@ object CreateViews {
         val fileTypeIv = ImageView(activity.applicationContext)
         fileTypeIv.layoutParams =
             ViewGroup.LayoutParams(
-                60,
-                60
+                80,
+                80
             )
 
         fileTypeIv.id = View.generateViewId()
@@ -194,8 +194,8 @@ object CreateViews {
         expandIv.id = View.generateViewId()
 
         val layParams = ConstraintLayout.LayoutParams(
-            40,
-            40
+            60,
+            60
         )
 
         layParams.leftMargin = leftMargin

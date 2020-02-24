@@ -21,19 +21,22 @@ import kotlinx.android.synthetic.main.fragment_about_me.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
+import kotlin.math.hypot
 import kotlin.math.max
 
-class AboutMeFragment : BaseAboutMeFragment() {
+class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
 
     private val TAG = "AppDebug"
 
+    companion object {
+        const val SHOULD_CLOSE_PHOTO = true
+        const val SHOULD_NOT_CLOSE_PHOTO = false
+
+        var mCurrentState = SHOULD_NOT_CLOSE_PHOTO
+    }
 
     lateinit var mBottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     lateinit var job: CompletableJob
-
-    // primitive vars
-    var lastTouchedX = 0.toFloat()
-    var lastTouchedY = 0.toFloat()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,11 +57,7 @@ class AboutMeFragment : BaseAboutMeFragment() {
 
         setActionBarTitle("About Me")
 
-        setLeftDrawerListeners()
-        initializeBottomsheet()
-        initializeExperiencePeriod()
-        initializeCircularReveal()
-
+        initilaizeEverything()
 
         if (viewModel.viewState.value?.aboutMeFields?.aboutMeModel == null) {
             subscribeObservers()
@@ -69,79 +68,105 @@ class AboutMeFragment : BaseAboutMeFragment() {
 
     }
 
+    fun initilaizeEverything(){
+        setLeftDrawerListeners()
+        initializeBottomsheet()
+        initializeExperiencePeriod()
+        initializeCircularReveal()
+
+        // set listener in the main activity
+        (activity as MainActivity?)?.setMOnBackPressListener(this)
+    }
+
     private fun initializeCircularReveal() {
-        val circularEnterAnLay = activity?.findViewById<View>(R.id.cl_circular_animation)
         val circularExitAnLay = activity?.findViewById<View>(R.id.iv_exit_circular)
 
-        iv_profile_picture_about_me?.setOnClickListener {
-
-            val x = id_about_me_fragment?.right
-            val y = id_about_me_fragment?.left
-
-            val startRadius = 0.toFloat()
-            val endRadius = Math.hypot(id_about_me_fragment!!.width.toDouble(), id_about_me_fragment!!.height.toDouble()).toFloat()
-
-            val animator =
-                ViewAnimationUtils.createCircularReveal(
-                    circularEnterAnLay,
-                    x!!,
-                    y!!,
-                    startRadius,
-                    endRadius
-                )
-
-            circularEnterAnLay?.visibility = View.VISIBLE
-            animator.start()
+        btn_profile_img_about_me?.setOnClickListener {
+            openCircularReveal()
         }
 
         circularExitAnLay?.setOnClickListener {
-            val x = id_about_me_fragment?.right
-            val y = id_about_me_fragment?.left
-
-            cl_circular_animation?.setOnClickListener {}
-
-            val startRadius =  max(id_about_me_fragment!!.width, id_about_me_fragment!!.height).toFloat()
-            val endRadius = 0.toFloat()
-
-            val animator =
-                ViewAnimationUtils.createCircularReveal(
-                    circularEnterAnLay,
-                    x!!,
-                    y!!,
-                    startRadius,
-                    endRadius
-                )
-
-            animator.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationRepeat(animation: Animator?) {
-
-                }
-
-                override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
-                    super.onAnimationEnd(animation, isReverse)
-                }
-
-                override fun onAnimationEnd(animation: Animator?) {
-                    circularEnterAnLay?.visibility = View.GONE
-                }
-
-                override fun onAnimationCancel(animation: Animator?) {
-
-                }
-
-                override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
-                    super.onAnimationStart(animation, isReverse)
-                }
-
-                override fun onAnimationStart(animation: Animator?) {
-
-                }
-            })
-
-            animator.start()
+            closeCircularReveal()
         }
     }
 
+    private fun openCircularReveal(){
+        val circularEnterAnLay = activity?.findViewById<View>(R.id.cl_circular_animation)
+
+        val x = id_about_me_fragment?.right
+        val y = id_about_me_fragment?.left
+
+        val startRadius = 0.toFloat()
+        val endRadius = hypot(
+            x = id_about_me_fragment!!.width.toDouble(),
+            y = id_about_me_fragment!!.height.toDouble()
+        ).toFloat()
+
+        val animator =
+            ViewAnimationUtils.createCircularReveal(
+                circularEnterAnLay,
+                x!!,
+                y!!,
+                startRadius,
+                endRadius
+            )
+
+        mCurrentState = SHOULD_CLOSE_PHOTO
+        circularEnterAnLay?.visibility = View.VISIBLE
+        animator.start()
+
+    }
+
+    private fun closeCircularReveal(){
+
+        val circularEnterAnLay = activity?.findViewById<View>(R.id.cl_circular_animation)
+
+        val x = id_about_me_fragment?.right
+        val y = id_about_me_fragment?.left
+
+        cl_circular_animation?.setOnClickListener {}
+
+        val startRadius =  max(id_about_me_fragment!!.width, id_about_me_fragment!!.height).toFloat()
+        val endRadius = 0.toFloat()
+
+        val animator =
+            ViewAnimationUtils.createCircularReveal(
+                circularEnterAnLay,
+                x!!,
+                y!!,
+                startRadius,
+                endRadius
+            )
+
+        animator.addListener(object : Animator.AnimatorListener {
+            override fun onAnimationRepeat(animation: Animator?) {
+
+            }
+
+            override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
+                super.onAnimationEnd(animation, isReverse)
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                circularEnterAnLay?.visibility = View.GONE
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+
+            }
+
+            override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
+                super.onAnimationStart(animation, isReverse)
+            }
+
+            override fun onAnimationStart(animation: Animator?) {
+
+            }
+        })
+
+        mCurrentState = SHOULD_NOT_CLOSE_PHOTO
+        animator.start()
+    }
 
     override fun onResume() {
         super.onResume()
@@ -154,6 +179,7 @@ class AboutMeFragment : BaseAboutMeFragment() {
         super.onPause()
         mainStateChangeListener.shouldStartShimmerInFragment(false)
     }
+
     private fun initializeBottomsheet() {
         // this is for bottomSheet
         mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_about_me)
@@ -246,12 +272,15 @@ class AboutMeFragment : BaseAboutMeFragment() {
 
     private fun updateView(aboutMeModel: AboutMeModel) {
 
-        dependencyProvider.getGlideRequestManager().load(aboutMeModel.profile_image_url)
+        dependencyProvider.getGlideRequestManager()
+            .load(aboutMeModel.profile_image_url)
+            .placeholder(R.drawable.profile_img_src)
             .into(iv_profile_picture_about_me)
 
-        dependencyProvider.getGlideRequestManager().load(aboutMeModel.profile_image_url)
+        dependencyProvider.getGlideRequestManager()
+            .load(aboutMeModel.profile_image_url)
+            .placeholder(R.drawable.profile_img_src)
             .into(activity?.findViewById(R.id.iv_circular_image_itself)!!)
-
 
         tv_address_info_about_me.setText(aboutMeModel.address)
         tv_phone_info_about_me.setText(aboutMeModel.phone_number)
@@ -280,6 +309,8 @@ class AboutMeFragment : BaseAboutMeFragment() {
     override fun onDestroyView() {
         super.onDestroyView()
 
+        mCurrentState = SHOULD_NOT_CLOSE_PHOTO
+
         job.cancel()
     }
 
@@ -287,6 +318,16 @@ class AboutMeFragment : BaseAboutMeFragment() {
         super.onDestroy()
         Log.d(TAG, "AboutMeFragment: onDestroy: ")
     }
+
+    override fun onBackPress() {
+        if(mCurrentState == SHOULD_CLOSE_PHOTO){
+            closeCircularReveal()
+        }
+    }
+}
+
+interface BackPressForAboutMe{
+    fun onBackPress()
 }
 
 

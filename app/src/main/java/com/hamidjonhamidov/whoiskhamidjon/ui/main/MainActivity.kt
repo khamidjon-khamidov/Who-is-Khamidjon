@@ -1,21 +1,19 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.main
 
-import android.animation.Animator
 import android.os.Bundle
 import android.view.View
-import android.view.ViewAnimationUtils
-import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.RequestManager
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.AboutMeFragment.Companion.SHOULD_CLOSE_PHOTO
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.AboutMeFragment.Companion.mCurrentState
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.BackPressForAboutMe
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.ViewModelProviderFactory
 import com.yarolegovich.slidingrootnav.SlidingRootNav
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.menu_left_drawer.*
-import java.lang.Integer.max
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
@@ -33,6 +31,13 @@ class MainActivity : BaseActivity(),
     lateinit var requestManager: RequestManager
 
     lateinit var slidingRootNav: SlidingRootNav
+
+    // listener for about me fragment
+    var onBackPressListener: BackPressForAboutMe? = null
+
+    fun setMOnBackPressListener(listener: BackPressForAboutMe){
+        onBackPressListener = listener
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +62,13 @@ class MainActivity : BaseActivity(),
             shimmer_full_screen_container.visibility = View.GONE
             shimmer_full_screen_container?.stopShimmer()
         }
+    }
+
+    override fun onBackPressed() {
+        if (mCurrentState == SHOULD_CLOSE_PHOTO) {
+            onBackPressListener?.onBackPress()
+        } else
+            super.onBackPressed()
     }
 
     override fun lockDrawer(isLocked: Boolean, menuId: Int) {

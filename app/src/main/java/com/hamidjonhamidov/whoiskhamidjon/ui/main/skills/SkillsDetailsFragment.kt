@@ -60,6 +60,7 @@ class SkillsDetailsFragment : BaseSkillsFragment() {
 
         dependencyProvider.getGlideRequestManager()
             .load(currentItem?.image_url)
+            .placeholder(R.drawable.default_image)
             .into(iv_main_skill_details)
 
 

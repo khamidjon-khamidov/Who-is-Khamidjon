@@ -124,11 +124,6 @@ class AboutMeModel(
 data class Subject(var subject: String = "", var score: String = "")
 
 
-// sun to phonebox
-// boys to boys
-// add another picture (star)
-
-
 
 
 

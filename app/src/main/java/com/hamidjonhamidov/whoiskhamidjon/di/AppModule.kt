@@ -26,8 +26,8 @@ class AppModule {
     @Singleton
     @Provides
     fun provideRequestOptions(): RequestOptions =
-        RequestOptions
-            .placeholderOf(R.drawable.profile_img_src)
+        RequestOptions.timeoutOf(100000)
+
 
     @Singleton
     @Provides
