@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills
 
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +9,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.skills.SkillModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListAdapter.SkillClickListener
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent.GetSkillsListStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.MainActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.SkillsListAdapter.SkillClickListener
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.state.SkillsStateEvent.GetSkillsListStateEvent
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.TopSpacingItemDecoration
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle

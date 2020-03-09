@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/updatePostFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.UpdatePostFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.fragments_for_posts.UpdatePostFragment"
         android:label="fragment_update_post"
         tools:layout="@layout/fragment_update_post" />
 </navigation>

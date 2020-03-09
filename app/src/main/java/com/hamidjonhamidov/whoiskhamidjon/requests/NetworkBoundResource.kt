@@ -31,6 +31,7 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
     protected lateinit var coroutineScope: CoroutineScope
 
     init {
+        Log.d(TAG, "NetworkBoundResource: init: called")
         setJob(initNewJob())
         setValue(DataState.loading(isLoading = true, cachedData = null))
 
@@ -65,7 +66,7 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
 
     fun doCacheRequest(message: String? = null){
         coroutineScope.launch {
-            delay(TESTING_CACHE_DELAY)
+//            delay(TESTING_CACHE_DELAY)
 
             // view only cache and return
             createCacheRequestAndReturn(message)
@@ -122,6 +123,8 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
     }
 
     fun onCompleteJob(dataState: DataState<ViewStateType>){
+        Log.d(TAG, "NetworkBoundResource: onCompleteJob: ${dataState.data?.dataReceived?.peekContent()}")
+
         GlobalScope.launch(Main) {
             job.complete()
             setValue(dataState)
@@ -147,6 +150,7 @@ abstract class NetworkBoundResource<ResponseObject, CacheObject, ViewStateType>(
         if(useDialog)
             responseType = ResponseType.Dialog()
 
+        Log.d(TAG, "NetworkBoundResource: onErrorReturn: called")
         onCompleteJob(DataState.error(MyResponse(msg, responseType)))
     }
 

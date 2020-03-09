@@ -18,7 +18,7 @@ interface MainDao{
     fun getAboutMeModel(): LiveData<AboutMeModel?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertOrReplaceSkills(skillModel: SkillModel)
+    suspend fun insertOrReplaceSkill(skillModel: SkillModel)
 
     @Query("SELECT * FROM skills")
     fun getSkills(): LiveData<List<SkillModel>>

@@ -3,7 +3,6 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,6 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.DialogButtonClickListener
 import com.hamidjonhamidov.whoiskhamidjon.ui.displayDialog
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import kotlinx.android.synthetic.main.fragment_delete_post.*
-import kotlinx.android.synthetic.main.fragment_update_post.*
 
 class DeletePostFragment : BasePostsFragment(), View.OnClickListener {
 

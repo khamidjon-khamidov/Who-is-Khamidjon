@@ -15,6 +15,7 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.ResponseType
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsViewState.SkillsListFields
+import com.hamidjonhamidov.whoiskhamidjon.util.AbsentLiveData
 import com.hamidjonhamidov.whoiskhamidjon.util.GenericNetworkResponse
 import com.hamidjonhamidov.whoiskhamidjon.util.JobManager
 import com.hamidjonhamidov.whoiskhamidjon.util.NetworkSuccessResponse
@@ -25,21 +26,23 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class MainRepository
+open class MainRepository
 @Inject
 constructor(
     private val requestFromFirebase: RequestFromFirebase,
-    private val mainDao: MainDao,
-    private val sessionManager: SessionManager
+    private val mainDao: MainDao
 ) : JobManager("AboutMeRepository") {
     private val TAG = "AppDebug"
 
 
-    fun getAboutMeInfo(): LiveData<DataState<AboutMeViewState>> {
+    // this is for testing
+    open fun getAboutMeInfoForTesting(): LiveData<DataState<AboutMeViewState>> = AbsentLiveData.create()
+
+    fun getAboutMeInfo(isConnected: Boolean): LiveData<DataState<AboutMeViewState>> {
         Log.d(TAG, "AboutMeRepository: getAboutMeInfo: called")
 
         return object : NetworkBoundResource<AboutMeModel, AboutMeModel, AboutMeViewState>(
-            sessionManager.isConnectedToTheInternet(),
+            isConnected,
             true,
             false,
             true
@@ -49,14 +52,18 @@ constructor(
 
                 withContext(Main) {
                     // finishing by viewing db cache
-                    result.addSource(loadFromCache()) { viewState: AboutMeViewState? ->
+                    val cacheLiveData = loadFromCache()
+                    result.addSource(cacheLiveData) { viewState: AboutMeViewState? ->
 
+                        Log.d(TAG, "MainRepository: createCacheRequestAndReturn: called")
                         onCompleteJob(DataState.data(viewState, message?.let {
                             MyResponse(
                                 message,
                                 ResponseType.Snackbar()
                             )
                         }))
+
+                        result.removeSource(cacheLiveData)
                     }
                 }
             }
@@ -117,11 +124,11 @@ constructor(
         }.asLiveData()
     }
 
-    fun getSkillsList(): LiveData<DataState<SkillsViewState>> {
+    fun getSkillsList(isConnected: Boolean): LiveData<DataState<SkillsViewState>> {
         Log.d(TAG, "MainRepository: getSkillsList: called")
 
         return object : NetworkBoundResource<List<SkillModel>, List<SkillModel>, SkillsViewState>(
-            sessionManager.isConnectedToTheInternet(),
+            isConnected,
             true,
             false,
             true
@@ -132,6 +139,7 @@ constructor(
                 withContext(Main) {
                     // finishing by viewing db cache
                     result.addSource(loadFromCache()) { viewState: SkillsViewState? ->
+                        Log.d(TAG, "MainRepository: createCacheRequestAndReturn: result.addSource")
                         onCompleteJob(DataState.data(viewState, message?.let {
                             MyResponse(
                                 message,
@@ -185,7 +193,7 @@ constructor(
                         Log.d(TAG, "MainRepository: updateLocalDb: ")
                         for (skill in cacheObject) {
                             Log.d(TAG, "MainRepository: updateLocalDb: ${skill.id}")
-                            mainDao.insertOrReplaceSkills(skill)
+                            mainDao.insertOrReplaceSkill(skill)
                         }
                     }
                 }

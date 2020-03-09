@@ -4,6 +4,7 @@ import android.os.Parcelable
 import android.util.Log
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -45,12 +46,24 @@ class AboutMeModel(
 
 ) : Parcelable {
 
+    // for testing
+    @Ignore
+    constructor(aboutMeModel: AboutMeModel): this(){
+        this.pk = aboutMeModel.pk
+        this.address = aboutMeModel.address
+        this.email = aboutMeModel.email
+        this.phone_number = aboutMeModel.phone_number
+        this.profile_image_url = aboutMeModel.profile_image_url
+        this.south_bank = aboutMeModel.south_bank
+        this.tuit = aboutMeModel.tuit
+    }
+
     override fun equals(other: Any?): Boolean {
         if (javaClass != other?.javaClass) return false
 
         other as AboutMeModel
 
-        if (pk == other.pk &&
+        if (
             email == other.email &&
             address == other.address &&
             phone_number == other.phone_number &&

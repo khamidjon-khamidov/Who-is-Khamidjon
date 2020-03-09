@@ -3,6 +3,7 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.viewmodel
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.hamidjonhamidov.whoiskhamidjon.repository.MainRepository
+import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
 import com.hamidjonhamidov.whoiskhamidjon.ui.BaseViewModel
 import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent
@@ -14,6 +15,7 @@ import javax.inject.Inject
 class SkillsViewModel
 @Inject
 constructor(
+    val sessionManager: SessionManager,
     val mainRepository: MainRepository
 ): BaseViewModel<SkillsStateEvent, SkillsViewState>(){
 
@@ -23,7 +25,7 @@ constructor(
         return when(stateEvent){
             is GetSkillsListStateEvent -> {
                 Log.d(TAG, "SkillsViewModel: handleStateEvent: ")
-                mainRepository.getSkillsList()
+                mainRepository.getSkillsList(sessionManager.isConnectedToTheInternet())
             }
 
             is SkillsStateEvent.None -> {

@@ -4,16 +4,19 @@ import android.animation.Animator
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.about_me.AboutMeModel
+import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
 import com.hamidjonhamidov.whoiskhamidjon.ui.displaySnackbar
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.DateUtil
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent.*
+import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo
 import com.hamidjonhamidov.whoiskhamidjon.util.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,9 +47,9 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_about_me, container, false)
     }
@@ -60,16 +63,39 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
 
         initilaizeEverything()
 
-        if (viewModel.viewState.value?.aboutMeFields?.aboutMeModel == null) {
-            subscribeObservers()
-            viewModel.setStateEvent(GetAboutMeStateEvent())
-        } else {
-            updateView(viewModel.viewState.value!!.aboutMeFields.aboutMeModel!!)
-        }
+        Log.d(TAG, "AboutMeFragment: onViewCreated: value= ${viewModel.viewState.value?.aboutMeFields?.aboutMeModel}")
 
+        subscribeObservers()
+
+        if (viewModel.viewState.value?.aboutMeFields?.aboutMeModel == null)
+            viewModel.setStateEvent(GetAboutMeStateEvent())
     }
 
-    fun initilaizeEverything(){
+    private fun subscribeObservers() {
+
+        viewModel.dataState.observe(viewLifecycleOwner, Observer { dataState ->
+
+            if (dataState != null) {
+
+                dataState.data?.dataReceived?.getContentIfNotHandled()?.aboutMeFields?.let {
+                    viewModel.setAboutMeFields(it)
+                    stateChangeListener.onDataStateChange(dataState)
+                }
+            }
+        })
+
+        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
+            if (viewState != null) {
+
+                viewState.aboutMeFields.aboutMeModel?.let { aboutMeModel ->
+                    updateView(aboutMeModel)
+                }
+            }
+        })
+    }
+
+
+    fun initilaizeEverything() {
         setLeftDrawerListeners()
         initializeBottomsheet()
         initializeExperiencePeriod()
@@ -91,7 +117,7 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
         }
     }
 
-    private fun openCircularReveal(){
+    private fun openCircularReveal() {
         val circularEnterAnLay = activity?.findViewById<View>(R.id.cl_circular_animation)
 
         val x = id_about_me_fragment?.right
@@ -99,18 +125,18 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
 
         val startRadius = 0.toFloat()
         val endRadius = hypot(
-            x = id_about_me_fragment!!.width.toDouble(),
-            y = id_about_me_fragment!!.height.toDouble()
+                x = id_about_me_fragment!!.width.toDouble(),
+                y = id_about_me_fragment!!.height.toDouble()
         ).toFloat()
 
         val animator =
-            ViewAnimationUtils.createCircularReveal(
-                circularEnterAnLay,
-                x!!,
-                y!!,
-                startRadius,
-                endRadius
-            )
+                ViewAnimationUtils.createCircularReveal(
+                        circularEnterAnLay,
+                        x!!,
+                        y!!,
+                        startRadius,
+                        endRadius
+                )
 
         mCurrentState = SHOULD_CLOSE_PHOTO
         circularEnterAnLay?.visibility = View.VISIBLE
@@ -118,7 +144,7 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
 
     }
 
-    private fun closeCircularReveal(){
+    private fun closeCircularReveal() {
 
         val circularEnterAnLay = activity?.findViewById<View>(R.id.cl_circular_animation)
 
@@ -127,17 +153,17 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
 
         cl_circular_animation?.setOnClickListener {}
 
-        val startRadius =  max(id_about_me_fragment!!.width, id_about_me_fragment!!.height).toFloat()
+        val startRadius = max(id_about_me_fragment!!.width, id_about_me_fragment!!.height).toFloat()
         val endRadius = 0.toFloat()
 
         val animator =
-            ViewAnimationUtils.createCircularReveal(
-                circularEnterAnLay,
-                x!!,
-                y!!,
-                startRadius,
-                endRadius
-            )
+                ViewAnimationUtils.createCircularReveal(
+                        circularEnterAnLay,
+                        x!!,
+                        y!!,
+                        startRadius,
+                        endRadius
+                )
 
         animator.addListener(object : Animator.AnimatorListener {
             override fun onAnimationRepeat(animation: Animator?) {
@@ -198,14 +224,14 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
                 mBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             } ?: let {
                 activity?.displaySnackbar(
-                    id_about_me_fragment,
-                    Constants.NO_DATA_AVAILABLE,
-                    "Retry",
-                    object : OnSnackbarClicked {
-                        override fun onSnackbarClick(snackbar: Snackbar) {
-                            viewModel.setStateEvent(GetAboutMeStateEvent())
-                        }
-                    })
+                        id_about_me_fragment,
+                        Constants.NO_DATA_AVAILABLE,
+                        "Retry",
+                        object : OnSnackbarClicked {
+                            override fun onSnackbarClick(snackbar: Snackbar) {
+                                viewModel.setStateEvent(GetAboutMeStateEvent())
+                            }
+                        })
             }
         }
 
@@ -221,72 +247,37 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
                 mBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             } ?: let {
                 activity?.displaySnackbar(
-                    id_about_me_fragment,
-                    Constants.NO_DATA_AVAILABLE,
-                    "Retry",
-                    object : OnSnackbarClicked {
-                        override fun onSnackbarClick(snackbar: Snackbar) {
-                            viewModel.setStateEvent(GetAboutMeStateEvent())
-                        }
-                    })
+                        id_about_me_fragment,
+                        Constants.NO_DATA_AVAILABLE,
+                        "Retry",
+                        object : OnSnackbarClicked {
+                            override fun onSnackbarClick(snackbar: Snackbar) {
+                                viewModel.setStateEvent(GetAboutMeStateEvent())
+                            }
+                        })
             }
 
         }
     }
 
-    private fun subscribeObservers() {
-
-        Log.d(TAG, "AboutMeFragment: subscribeObservers: 1")
-
-        viewModel.dataState.observe(viewLifecycleOwner, Observer { dataState ->
-            // DataState<AboutMeViewState>
-
-            Log.d(TAG, "AboutMeFragment: subscribeObservers: 2")
-
-            if (dataState != null) {
-
-                dataState.data?.dataReceived?.getContentIfNotHandled()?.aboutMeFields?.let {
-                    Log.d(
-                        TAG,
-                        "AboutMeFragment: subscribeObservers: aboutMeFields:vo ${it.aboutMeModel}"
-                    )
-                    viewModel.setAboutMeFields(it)
-                    stateChangeListener.onDataStateChange(dataState)
-                }
-            }
-        })
-
-
-        viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
-            if (viewState != null) {
-
-                Log.d(TAG, "AboutMeFragment: subscribeObservers: 3")
-
-                viewState.aboutMeFields.aboutMeModel?.let { aboutMeModel ->
-                    updateView(aboutMeModel)
-                    updatePersonalInfo(aboutMeModel)
-                }
-            }
-
-        })
-    }
-
     private fun updateView(aboutMeModel: AboutMeModel) {
 
         dependencyProvider.getGlideRequestManager()
-            .load(aboutMeModel.profile_image_url)
-            .into(iv_profile_picture_about_me)
+                .load(aboutMeModel.profile_image_url)
+                .into(iv_profile_picture_about_me)
 
         dependencyProvider.getGlideRequestManager()
-            .load(aboutMeModel.profile_image_url)
-            .into(activity?.findViewById(R.id.iv_circular_image_itself)!!)
+                .load(aboutMeModel.profile_image_url)
+                .into(activity?.findViewById(R.id.iv_circular_image_itself)!!)
 
         tv_address_info_about_me.setText(aboutMeModel.address)
         tv_phone_info_about_me.setText(aboutMeModel.phone_number)
         tv_email_info_about_me.setText(aboutMeModel.email)
+
+        updatePersonalInfo(aboutMeModel)
     }
 
-    fun updatePersonalInfo(aboutMeModel: AboutMeModel){
+    fun updatePersonalInfo(aboutMeModel: AboutMeModel) {
         PersonalInfo.phoneNumber = aboutMeModel.phone_number
         PersonalInfo.email = aboutMeModel.email
     }
@@ -311,10 +302,11 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when(item.itemId){
+        when (item.itemId) {
 
             R.id.menu_item_refresh -> {
                 viewModel.setStateEvent(GetAboutMeStateEvent())
+                Toast.makeText(activity, "Clicked", Toast.LENGTH_SHORT).show()
                 return true
             }
         }
@@ -336,13 +328,13 @@ class AboutMeFragment : BaseAboutMeFragment(), BackPressForAboutMe {
     }
 
     override fun onBackPress() {
-        if(mCurrentState == SHOULD_CLOSE_PHOTO){
+        if (mCurrentState == SHOULD_CLOSE_PHOTO) {
             closeCircularReveal()
         }
     }
 }
 
-interface BackPressForAboutMe{
+interface BackPressForAboutMe {
     fun onBackPress()
 }
 

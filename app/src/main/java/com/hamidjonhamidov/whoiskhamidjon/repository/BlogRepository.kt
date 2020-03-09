@@ -48,6 +48,7 @@ constructor(
                 withContext(Main) {
 
                     result.addSource(loadFromCache()) { viewState: BlogsPostsViewState? ->
+                        Log.d(TAG, "BlogRepository: createCacheRequestAndReturn: result.addSource")
                         onCompleteJob(DataState.data(viewState, message?.let {
                             MyResponse(
                                 message,
@@ -122,6 +123,7 @@ constructor(
                 withContext(Main){
                     result.addSource(loadFromCache()){ viewState: BlogsPostsViewState? ->
 
+                        Log.d(TAG, "BlogRepository: createCacheRequestAndReturn: result.addSource")
                         onCompleteJob(DataState.data(viewState,
                             MyResponse(
                                 "Successfully posted, but it will not be updated on website!",

@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui
 
 import android.app.Activity
 import android.app.Dialog

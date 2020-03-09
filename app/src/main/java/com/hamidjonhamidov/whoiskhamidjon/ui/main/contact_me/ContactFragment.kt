@@ -14,7 +14,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
@@ -27,7 +26,6 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeView
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.SendMessageFields
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants.SMS_PERMISSION_REQUEST_CODE
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
-import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import kotlinx.android.synthetic.main.fragment_contact.*
 import java.lang.Exception
 

@@ -3,9 +3,9 @@ package com.hamidjonhamidov.whoiskhamidjon.requests
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
-import com.hamidjonhamidov.whoiskhamidjon.ui.MyResponse
-import com.hamidjonhamidov.whoiskhamidjon.ui.ResponseType
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.DataState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.MyResponse
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.ResponseType
 import com.hamidjonhamidov.whoiskhamidjon.util.*
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants.ERROR_CHECK_NETWORK_CONNECTION
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants.ERROR_UNKNOWN

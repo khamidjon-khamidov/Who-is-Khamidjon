@@ -2,9 +2,9 @@ package com.hamidjonhamidov.whoiskhamidjon.di.main
 
 import androidx.lifecycle.ViewModel
 import com.hamidjonhamidov.whoiskhamidjon.di.ViewModelKey
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel.AboutMeViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.viewmodel.ContactMeViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.viewmodel.SkillsViewModel
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.viewmodel.AboutMeViewModel
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.viewmodel.ContactMeViewModel
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.viewmodel.SkillsViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

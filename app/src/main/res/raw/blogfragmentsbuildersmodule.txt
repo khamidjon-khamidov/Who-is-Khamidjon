@@ -1,8 +1,8 @@
 package com.hamidjonhamidov.whoiskhamidjon.di.blog_posts
 
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.BlogPostsFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.DeletePostFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts.UpdatePostFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.fragments_for_posts.BlogPostsFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.fragments_for_posts.DeletePostFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.fragments_for_posts.UpdatePostFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

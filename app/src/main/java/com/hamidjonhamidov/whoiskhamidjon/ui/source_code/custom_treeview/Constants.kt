@@ -1,7 +1,5 @@
 package com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview
 
-import com.hamidjonhamidov.whoiskhamidjon.R
-
 object Constants {
 
 

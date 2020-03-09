@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me
 
 
 import android.content.Intent
@@ -12,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo.phoneNumber
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_EMAIL
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_MESSAGE
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.MainActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.PersonalInfo.phoneNumber
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_EMAIL
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.state.ContactMeViewState.Companion.TYPE_SEND_MESSAGE
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners

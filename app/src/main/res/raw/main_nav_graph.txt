@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/aboutMeFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.AboutMeFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.AboutMeFragment"
         android:label="AboutMeFragment" >
         <action
             android:id="@+id/action_aboutMeFragment_to_skillsListFragment"
@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/skillsListFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.SkillsListFragment"
         android:label="fragment_skills_list"
         tools:layout="@layout/fragment_skills_list" >
 
@@ -57,25 +57,25 @@
 
     <fragment
         android:id="@+id/skillsDetailsFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsDetailsFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.SkillsDetailsFragment"
         android:label="fragment_skills_details"
         tools:layout="@layout/fragment_skills_details" />
 
     <fragment
         android:id="@+id/personalProjectsFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.persojal_projects.PersonalProjectsFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.persojal_projects.PersonalProjectsFragment"
         android:label="fragment_personal_projects"
         tools:layout="@layout/fragment_personal_projects" />
 
     <fragment
         android:id="@+id/aboutAppFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.about_app.AboutAppFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_app.AboutAppFragment"
         android:label="fragment_about_app"
         tools:layout="@layout/fragment_about_app" />
 
     <fragment
         android:id="@+id/contactTypeFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactTypeFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.ContactTypeFragment"
         android:label="fragment_contact_type"
         tools:layout="@layout/fragment_contact_type" >
         <action
@@ -89,7 +89,7 @@
 
     <fragment
         android:id="@+id/contactFragment"
-        android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactFragment"
+        android:name="com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.ContactFragment"
         android:label="fragment_contact"
         tools:layout="@layout/fragment_contact" />
 </navigation>

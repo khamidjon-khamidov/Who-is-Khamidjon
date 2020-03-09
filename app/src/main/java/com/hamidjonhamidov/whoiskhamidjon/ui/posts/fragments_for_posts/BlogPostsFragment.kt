@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -14,8 +13,6 @@ import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.DialogButtonClickListener
 import com.hamidjonhamidov.whoiskhamidjon.ui.displayDialog
 import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsRecyclerAdapter
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.PostsDataStateChangeListener
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent
 import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent.GetBlogListStateEvent
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import kotlinx.android.synthetic.main.fragment_blog_posts.*

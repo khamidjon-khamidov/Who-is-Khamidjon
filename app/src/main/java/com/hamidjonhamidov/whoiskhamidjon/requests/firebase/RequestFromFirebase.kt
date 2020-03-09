@@ -9,16 +9,17 @@ import com.hamidjonhamidov.whoiskhamidjon.models.skills.SkillModel
 import com.hamidjonhamidov.whoiskhamidjon.util.GenericNetworkResponse
 import javax.inject.Inject
 
-class RequestFromFirebase
+open class RequestFromFirebase
 @Inject
 constructor(
-    private val dbFirebase: FirebaseFirestore
+    var dbFirebase: FirebaseFirestore
 ) {
 
     private val TAG = "AppDebug"
 
-    fun requestAboutMeInfo():
+    open fun requestAboutMeInfo():
             LiveData<GenericNetworkResponse<AboutMeModel>> {
+        Log.d(TAG, "RequestFromFirebase: requestAboutMeInfo: requested")
         val result = MutableLiveData<GenericNetworkResponse<AboutMeModel>>()
 
 
@@ -36,8 +37,7 @@ constructor(
                             )
                     )
                 }
-            }
-            .addOnCanceledListener {
+            }?.addOnCanceledListener {
                 result.postValue(
                     GenericNetworkResponse
                         .create(data = null, strResponse = "Couldn't Refresh from Firebase")
@@ -47,7 +47,7 @@ constructor(
         return result
     }
 
-    fun requestSkills():
+    open fun requestSkills():
             LiveData<GenericNetworkResponse<List<SkillModel>>> {
         val result = MutableLiveData<GenericNetworkResponse<List<SkillModel>>>()
 
@@ -57,10 +57,10 @@ constructor(
                 val skillsList = ArrayList<SkillModel>()
                 for (doc in it.documents) {
                     val skillModel = doc.toObject(SkillModel::class.java)
-                    Log.d(TAG, "RequestFromFirebase: requestSkills: called")
+//                    Log.d(TAG, "RequestFromFirebase: requestSkills: called")
                     if (skillModel != null) {
                         skillsList.add(skillModel)
-                        Log.d(TAG, "RequestFromFirebase: requestSkills: ${skillModel.id}")
+//                        Log.d(TAG, "RequestFromFirebase: requestSkills: ${skillModel.id}")
                     }
                 }
                 result.postValue(
@@ -70,7 +70,7 @@ constructor(
                             strResponse = "Successfully Refreshed from Firebase!"
                         )
                 )
-            }.addOnCanceledListener {
+            }?.addOnCanceledListener {
                 result.postValue(
                     GenericNetworkResponse
                         .create(data = null, strResponse = "Couldn't Refresh from Firebase")

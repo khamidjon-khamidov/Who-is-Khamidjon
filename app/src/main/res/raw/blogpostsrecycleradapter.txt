@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.posts
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts
 
 import android.view.LayoutInflater
 import android.view.View

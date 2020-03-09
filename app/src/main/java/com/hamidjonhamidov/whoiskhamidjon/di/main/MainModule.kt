@@ -31,6 +31,6 @@ class MainModule {
         mainDao: MainDao,
         sessionManager: SessionManager
     ) =
-        MainRepository(requestFromFirebase, mainDao, sessionManager)
+        MainRepository(requestFromFirebase, mainDao)
 
 }

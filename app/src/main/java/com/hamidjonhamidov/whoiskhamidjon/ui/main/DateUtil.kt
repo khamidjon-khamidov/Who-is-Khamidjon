@@ -3,7 +3,6 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 object DateUtil {
 

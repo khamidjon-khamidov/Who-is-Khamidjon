@@ -6,14 +6,15 @@ import android.net.ConnectivityManager
 import android.util.Log
 import javax.inject.Inject
 
-class SessionManager
+open class SessionManager
 @Inject
 constructor(
     val application: Application
 ){
     private val TAG = "AppDebug"
     fun isConnectedToTheInternet(): Boolean{
-        val cm = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val cm = application.applicationContext
+            .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         try{
             return cm.activeNetworkInfo.isConnected
         }catch (e: Exception){

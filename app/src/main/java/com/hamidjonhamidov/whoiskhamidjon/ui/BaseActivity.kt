@@ -7,7 +7,6 @@ import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
 import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.OnSnackbarClicked
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -35,10 +34,9 @@ abstract class BaseActivity: DaggerAppCompatActivity(),
                 it.data?.let {
 
                     it.responseReceived?.let {  responseReceived->
-                        Log.d(TAG, "BaseActivity: onDataStateChange: called")
+                        Log.d(TAG, "BaseActivity: onDataStateChange: responseReceived")
                         handleStateResponse(responseReceived)
                     }
-
                 }
             }
         }
@@ -49,6 +47,8 @@ abstract class BaseActivity: DaggerAppCompatActivity(),
     abstract fun displayProgressBar(shouldShowProgressBar: Boolean)
 
     private fun handleStateResponse(event: Event<MyResponse>){
+
+        Log.d(TAG, "BaseActivity: handleStateResponse: getContentIfNotHandled := ${event.peekContent()}")
         event.getContentIfNotHandled()?.let{
 
             when(it.responseType){
@@ -60,8 +60,6 @@ abstract class BaseActivity: DaggerAppCompatActivity(),
                             }
                         })
                     }
-
-                    it.message = null
                 }
 
                 is ResponseType.Dialog ->{
@@ -86,6 +84,7 @@ abstract class BaseActivity: DaggerAppCompatActivity(),
                 is ResponseType.Snackbar ->{
                     it.myResponse.message?.let{ message ->
 //                        displaySnackbar(message)
+                        displayErrorDialog(message)
                     }
                 }
 

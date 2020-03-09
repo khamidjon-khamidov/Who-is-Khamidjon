@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.state
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.state
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

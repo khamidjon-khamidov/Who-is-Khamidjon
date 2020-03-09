@@ -3,6 +3,7 @@ package com.hamidjonhamidov.whoiskhamidjon.models.skills
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
@@ -32,6 +33,15 @@ data class SkillModel(
     @ColumnInfo(name = "percentage") var percentage: String = "0"
 
 ) : Parcelable {
+
+    @Ignore
+    constructor(skillModel: SkillModel): this(){
+        this.id = skillModel.id
+        this.description = skillModel.description
+        this.name = skillModel.name
+        this.image_url = skillModel.image_url
+        this.percentage = skillModel.percentage
+    }
 
     override fun equals(other: Any?): Boolean {
         if (javaClass != other?.javaClass) return false

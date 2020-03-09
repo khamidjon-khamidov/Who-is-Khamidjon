@@ -10,10 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDataStateChangeListener
-import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners
 import com.skyhope.showmoretextview.ShowMoreTextView

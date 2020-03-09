@@ -28,6 +28,8 @@ abstract class BaseSkillsFragment : Fragment(), Injectable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        Log.d(TAG, "BaseSkillsFragment: onCreate: entered")
+
         viewModel = activity?.run{
             ViewModelProvider(
                 this, dependencyProvider.getVMProviderFactory()

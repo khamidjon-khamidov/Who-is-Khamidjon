@@ -5,11 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent
-import kotlinx.coroutines.*
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
 
 abstract class BaseViewModel<StateEvent, ViewState> : ViewModel() {
 
@@ -25,6 +20,7 @@ abstract class BaseViewModel<StateEvent, ViewState> : ViewModel() {
         .switchMap(_stateEvent) { stateEvent: StateEvent ->
             stateEvent?.let {
                 Log.d(TAG, "BaseViewModel: dataState: Changedohhh")
+
                 handleStateEvent(stateEvent)
             }
         }
@@ -37,14 +33,17 @@ abstract class BaseViewModel<StateEvent, ViewState> : ViewModel() {
     fun getCurrentViewStateOrNew(): ViewState {
         Log.d(TAG, "BaseViewModel: getCurrentViewStateOrNew: ")
         val value = viewState.value?.let {
+            Log.d(TAG, "BaseViewModel: getCurrentViewStateOrNew: current one")
             it
-        } ?: initNewViewState()
+        } ?: initNewViewState().also {
+            Log.d(TAG, "BaseViewModel: getCurrentViewStateOrNew: new one")
+        }
 
         return value
     }
 
     fun setViewState(viewState: ViewState) {
-        Log.d(TAG, "BaseViewModel: setViewState: ")
+        Log.d(TAG, "BaseViewModel: setViewState: called")
         _viewState.value = viewState
     }
 

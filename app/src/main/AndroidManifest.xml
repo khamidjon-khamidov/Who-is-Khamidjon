@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hamidjonhamidov.whoiskhamidjon">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,11 +14,8 @@
         android:roundIcon="@drawable/profile_img_src"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.source_code.CodeViewActivity"></activity>
-        <activity android:name=".ui.source_code.SourceCodeActivity" />
-        <activity android:name=".ui.posts.BlogPostsActivity" />
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.source_code.CodeViewActivity" />
+        <activity android:name=".ui.source_code.SourceCodeActivity" />
+        <activity android:name=".ui.posts.BlogPostsActivity" />
     </application>
 
 </manifest>

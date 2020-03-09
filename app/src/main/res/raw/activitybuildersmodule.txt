@@ -8,8 +8,8 @@ import com.hamidjonhamidov.whoiskhamidjon.di.main.MainFragmentBuildersModule
 import com.hamidjonhamidov.whoiskhamidjon.di.main.MainModule
 import com.hamidjonhamidov.whoiskhamidjon.di.main.MainScope
 import com.hamidjonhamidov.whoiskhamidjon.di.main.MainViewModelModule
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.MainActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.BlogPostsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

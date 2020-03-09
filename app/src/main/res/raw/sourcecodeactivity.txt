@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.source_code
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,18 +10,18 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.*
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.FILE_TYPE_BLUE_FILE
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.FILE_TYPE_LEAF
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.FILE_TYPE_PACKAGE
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.RES_ID_EXTRA
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.STATE_CLOSED_IN_VIEW
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.STATE_OPENED_IN_VIEW
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.CreateViews.connectMainToParent
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.CreateViews.connectCl1OnBottomCl2InsideTopCl3
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.CreateViews.createConstraintLayout
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.CreateViews.createImageViewForFileType
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.CreateViews.createTextViewForFileName
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.*
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.FILE_TYPE_BLUE_FILE
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.FILE_TYPE_LEAF
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.FILE_TYPE_PACKAGE
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.RES_ID_EXTRA
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.STATE_CLOSED_IN_VIEW
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.STATE_OPENED_IN_VIEW
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.CreateViews.connectMainToParent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.CreateViews.connectCl1OnBottomCl2InsideTopCl3
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.CreateViews.createConstraintLayout
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.CreateViews.createImageViewForFileType
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.CreateViews.createTextViewForFileName
 import kotlinx.android.synthetic.main.activity_source_code.*
 import java.util.*
 

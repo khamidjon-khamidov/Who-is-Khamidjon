@@ -8,10 +8,10 @@ import com.hamidjonhamidov.whoiskhamidjon.requests.NetworkBoundResource
 import com.hamidjonhamidov.whoiskhamidjon.requests.api.ApiBlogPostsService
 import com.hamidjonhamidov.whoiskhamidjon.requests.persistence.BlogPostsDao
 import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
-import com.hamidjonhamidov.whoiskhamidjon.ui.MyResponse
-import com.hamidjonhamidov.whoiskhamidjon.ui.ResponseType
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogsPostsViewState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.DataState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.MyResponse
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.ResponseType
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.state.BlogsPostsViewState
 import com.hamidjonhamidov.whoiskhamidjon.util.GenericNetworkResponse
 import com.hamidjonhamidov.whoiskhamidjon.util.JobManager
 import com.hamidjonhamidov.whoiskhamidjon.util.NetworkSuccessResponse

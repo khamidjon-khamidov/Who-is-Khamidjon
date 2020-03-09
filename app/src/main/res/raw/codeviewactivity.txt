@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.source_code
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import br.tiagohm.codeview.CodeView
 import br.tiagohm.codeview.Language
 import br.tiagohm.codeview.Theme
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.RES_ID_EXTRA
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.RES_ID_EXTRA
 import kotlinx.android.synthetic.main.activity_code_view.*
 import java.io.ByteArrayOutputStream
 

@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me
 
 import android.animation.Animator
 import android.os.Bundle
@@ -10,11 +10,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.hamidjonhamidov.whoiskhamidjon.R
 import com.hamidjonhamidov.whoiskhamidjon.models.about_me.AboutMeModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.displaySnackbar
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.DateUtil
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainActivity
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent.*
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.PersonalInfo
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.displaySnackbar
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.DateUtil
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.MainActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.state.AboutMeStateEvent.*
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.PersonalInfo
 import com.hamidjonhamidov.whoiskhamidjon.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_about_me.*

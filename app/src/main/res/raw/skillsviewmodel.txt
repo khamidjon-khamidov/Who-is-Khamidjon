@@ -1,14 +1,14 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.viewmodel
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.hamidjonhamidov.whoiskhamidjon.repository.MainRepository
-import com.hamidjonhamidov.whoiskhamidjon.ui.BaseViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsStateEvent.GetSkillsListStateEvent
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state.SkillsViewState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.BaseViewModel
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.DataState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.state.SkillsStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.state.SkillsStateEvent.GetSkillsListStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.state.SkillsViewState
 import com.hamidjonhamidov.whoiskhamidjon.util.AbsentLiveData
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.persojal_projects
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.persojal_projects
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.MainDataStateChangeListener
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.MainDataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import com.hamidjonhamidov.whoiskhamidjon.util.setLeftDrawerListeners

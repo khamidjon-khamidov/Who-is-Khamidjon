@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me
 
 object PersonalInfo {
     var phoneNumber = "07565336207"

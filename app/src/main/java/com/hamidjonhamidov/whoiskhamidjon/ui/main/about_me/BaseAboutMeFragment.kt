@@ -3,7 +3,6 @@ package com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.hamidjonhamidov.whoiskhamidjon.di.Injectable
@@ -27,6 +26,8 @@ abstract class BaseAboutMeFragment : Fragment(), Injectable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.d(TAG, "BaseAboutMeFragment: onCreate: entered")
         viewModel = activity?.run {
             ViewModelProvider(
                 this, dependencyProvider.getVMProviderFactory()
@@ -40,10 +41,6 @@ abstract class BaseAboutMeFragment : Fragment(), Injectable {
 
             Log.d(TAG, "BaseAboutMeFragment: onCreate: savedInstance!=null")
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
 

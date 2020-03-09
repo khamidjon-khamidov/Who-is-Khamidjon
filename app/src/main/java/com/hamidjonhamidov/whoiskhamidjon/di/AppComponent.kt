@@ -1,6 +1,7 @@
 package com.hamidjonhamidov.whoiskhamidjon.di
 
 import android.app.Application
+import android.content.Context
 import com.hamidjonhamidov.whoiskhamidjon.BaseApplication
 import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
 import dagger.BindsInstance

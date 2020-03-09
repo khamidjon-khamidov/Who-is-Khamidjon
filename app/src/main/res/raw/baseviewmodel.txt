@@ -1,12 +1,12 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.state.AboutMeViewState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.state.BlogPostsStateEvent
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main

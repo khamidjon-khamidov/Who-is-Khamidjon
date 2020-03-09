@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.posts.fragments_for_posts
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.fragments_for_posts
 
 
 import android.app.Dialog
@@ -12,10 +12,10 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.DialogButtonClickListener
-import com.hamidjonhamidov.whoiskhamidjon.ui.displayDialog
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent.PostNewBlogStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.DialogButtonClickListener
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.displayDialog
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.state.BlogPostsStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.state.BlogPostsStateEvent.PostNewBlogStateEvent
 import com.hamidjonhamidov.whoiskhamidjon.util.setActionBarTitle
 import kotlinx.android.synthetic.main.fragment_update_post.*
 

@@ -1,12 +1,12 @@
 package com.hamidjonhamidov.whoiskhamidjon.di.main
 
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_app.AboutAppFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.AboutMeFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.contact_me.ContactTypeFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.persojal_projects.PersonalProjectsFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsDetailsFragment
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_app.AboutAppFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.AboutMeFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.ContactFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.contact_me.ContactTypeFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.persojal_projects.PersonalProjectsFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.SkillsDetailsFragment
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.SkillsListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

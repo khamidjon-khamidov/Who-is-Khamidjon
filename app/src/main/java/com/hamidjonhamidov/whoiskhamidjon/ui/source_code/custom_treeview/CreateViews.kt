@@ -11,7 +11,6 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
-import com.hamidjonhamidov.whoiskhamidjon.R
 
 object CreateViews {
 

@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main
 
 import com.hamidjonhamidov.whoiskhamidjon.util.Constants
 import java.text.SimpleDateFormat

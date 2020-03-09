@@ -1,15 +1,15 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.viewmodel
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.hamidjonhamidov.whoiskhamidjon.repository.MainRepository
-import com.hamidjonhamidov.whoiskhamidjon.ui.BaseViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent.GetAboutMeStateEvent
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeStateEvent.None
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState
-import com.hamidjonhamidov.whoiskhamidjon.ui.main.about_me.state.AboutMeViewState.*
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.BaseViewModel
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.DataState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.state.AboutMeStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.state.AboutMeStateEvent.GetAboutMeStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.state.AboutMeStateEvent.None
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.state.AboutMeViewState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.about_me.state.AboutMeViewState.*
 import com.hamidjonhamidov.whoiskhamidjon.util.AbsentLiveData
 import javax.inject.Inject
 

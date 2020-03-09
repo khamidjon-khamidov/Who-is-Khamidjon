@@ -1,13 +1,13 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.posts.viewmodel
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import com.hamidjonhamidov.whoiskhamidjon.repository.BlogRepository
-import com.hamidjonhamidov.whoiskhamidjon.ui.BaseViewModel
-import com.hamidjonhamidov.whoiskhamidjon.ui.DataState
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogPostsStateEvent.*
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.state.BlogsPostsViewState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.BaseViewModel
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.DataState
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.state.BlogPostsStateEvent
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.state.BlogPostsStateEvent.*
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.state.BlogsPostsViewState
 import com.hamidjonhamidov.whoiskhamidjon.util.AbsentLiveData
 import javax.inject.Inject
 

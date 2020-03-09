@@ -16,7 +16,7 @@ class CodeViewActivity : AppCompatActivity(), CodeView.OnHighlightListener {
     private val TAG = "AppDebug"
 
     var resId: Int = 0
-    lateinit var codeStr: String
+    var codeStr: String? = null
 
     lateinit var language: Language
 
@@ -26,9 +26,10 @@ class CodeViewActivity : AppCompatActivity(), CodeView.OnHighlightListener {
 
         resId = intent.getIntExtra(RES_ID_EXTRA, -1)
 
-        if (resId == -1) finish()
-
-        getCode()
+        if (resId == -1)
+            codeStr = "Sorry, code is empty!"
+        else
+            getCode()
         initCodeVeiw()
     }
 
@@ -66,7 +67,8 @@ class CodeViewActivity : AppCompatActivity(), CodeView.OnHighlightListener {
 
         codeStr = byteArrayOutputStream.toString()
         language =
-            if (codeStr.contains("<?xml version=\"1.0\" encoding=\"utf-8\"?>")) Language.XML
+            if (codeStr!!.contains("<?xml version=\"1.0\" encoding=\"utf-8\"?>"))
+                Language.XML
             else Language.KOTLIN
 
         Log.d(TAG, "CodeViewActivity: getCode: $codeStr")

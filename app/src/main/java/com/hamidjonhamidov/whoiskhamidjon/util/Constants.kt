@@ -61,25 +61,25 @@ object Constants {
 
 
     private val TAG = "AppDebug"
-    fun parseDetailJsonResponse(rawJson: String?): String{
-        try{
-            if(!rawJson.isNullOrBlank()){
-                if(rawJson.equals(ERROR_CHECK_NETWORK_CONNECTION)){
-                    return PAGINATION_DONE_ERROR
-                }
-                return JSONObject(rawJson).get("detail") as String
-            }
-        } catch (e: JSONException){
-            Log.d(TAG, "Constants: parseDetailJsonResponse: ${e.message}")
-        }
-        return ""
-    }
+//    fun parseDetailJsonResponse(rawJson: String?): String{
+//        try{
+//            if(!rawJson.isNullOrBlank()){
+//                if(rawJson.equals(ERROR_CHECK_NETWORK_CONNECTION)){
+//                    return PAGINATION_DONE_ERROR
+//                }
+//                return JSONObject(rawJson).get("detail") as String
+//            }
+//        } catch (e: JSONException){
+//            Log.d(TAG, "Constants: parseDetailJsonResponse: ${e.message}")
+//        }
+//        return ""
+//    }
 
 
-    fun isPaginationDone(errorResponse: String?): Boolean{
-        // if error response = '{"detail":"Invalid page."}' then pagination is done
-        return PAGINATION_DONE_ERROR.equals(parseDetailJsonResponse(errorResponse))
-    }
+//    fun isPaginationDone(errorResponse: String?): Boolean{
+//        // if error response = '{"detail":"Invalid page."}' then pagination is done
+//        return PAGINATION_DONE_ERROR.equals(parseDetailJsonResponse(errorResponse))
+//    }
 }
 
 

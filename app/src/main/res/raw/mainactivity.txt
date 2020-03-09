@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.RequestManager
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.BaseActivity
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.BaseActivity
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.BlogPostsActivity
 import com.hamidjonhamidov.whoiskhamidjon.util.DataStateChangeListener
 import com.hamidjonhamidov.whoiskhamidjon.util.MainNavigation
 import com.hamidjonhamidov.whoiskhamidjon.util.ViewModelProviderFactory

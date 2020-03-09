@@ -8,7 +8,7 @@ import com.hamidjonhamidov.whoiskhamidjon.requests.api.ApiBlogPostsService
 import com.hamidjonhamidov.whoiskhamidjon.requests.persistence.AppDatabase
 import com.hamidjonhamidov.whoiskhamidjon.requests.persistence.BlogPostsDao
 import com.hamidjonhamidov.whoiskhamidjon.session.SessionManager
-import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsConstants.BASE_URL
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.posts.BlogPostsConstants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

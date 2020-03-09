@@ -1,4 +1,4 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.state
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.main.skills.state
 
 sealed class SkillsStateEvent{
 

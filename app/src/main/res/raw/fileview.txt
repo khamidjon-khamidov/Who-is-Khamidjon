@@ -1,12 +1,12 @@
-package com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview
+package com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview
 
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.hamidjonhamidov.whoiskhamidjon.R
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.FILE_TYPE_BLUE_FILE
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.FILE_TYPE_PACKAGE
-import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.custom_treeview.Constants.STATE_CLOSED_IN_VIEW
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.FILE_TYPE_BLUE_FILE
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.FILE_TYPE_PACKAGE
+import com.hamidjonhamidov.whoiskhamidjon.ui_testing.ui.source_code.custom_treeview.Constants.STATE_CLOSED_IN_VIEW
 
 data class FileView(
     var type: Int = FILE_TYPE_PACKAGE,

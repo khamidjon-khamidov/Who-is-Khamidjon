@@ -3,7 +3,6 @@
 package com.hamidjonhamidov.whoiskhamidjon.util
 
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.cardview.widget.CardView
@@ -18,9 +17,6 @@ import com.hamidjonhamidov.whoiskhamidjon.ui.main.persojal_projects.PersonalProj
 import com.hamidjonhamidov.whoiskhamidjon.ui.main.skills.SkillsListFragment
 import com.hamidjonhamidov.whoiskhamidjon.ui.posts.BlogPostsActivity
 import com.hamidjonhamidov.whoiskhamidjon.ui.source_code.SourceCodeActivity
-import com.yarolegovich.slidingrootnav.SlidingRootNav
-import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder
-import kotlinx.android.synthetic.main.menu_left_drawer.*
 
 object MainNavigation {
 
